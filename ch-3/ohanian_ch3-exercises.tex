@@ -1,0 +1,906 @@
+\documentclass[11pt]{article}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumitem}
+\usepackage{amsmath, physics}
+\usepackage{bm}
+\usepackage{adjustbox}
+\usepackage{mathrsfs}
+\usepackage{graphicx}
+% \usepackage{siunitx}
+\usepackage{physunits}
+\usepackage[mathscr]{euscript}
+
+\title{\textbf{Solved selected problems of Classical Electrodynamics - Hans Ohanian}}
+\author{Franco Zacco}
+\date{}
+
+\addtolength{\topmargin}{-3cm}
+\addtolength{\textheight}{3cm}
+
+\newcommand{\Nat}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\diam}{\text{diam}}
+\newcommand{\cl}{\text{cl}}
+\newcommand{\bdry}{\text{bdry}}
+\newcommand{\inter}{\text{int}}
+\newcommand{\hatx}{\bm{\hat{x}}}
+\newcommand{\haty}{\bm{\hat{y}}}
+\newcommand{\hatz}{\bm{\hat{z}}}
+\newcommand{\hatr}{\bm{\hat{r}}}
+\newcommand{\hatn}{\bm{\hat{n}}}
+\newcommand{\hatrho}{\bm{\hat{\rho}}}
+\newcommand{\hatphi}{\bm{\hat{\phi}}}
+\newcommand{\hattheta}{\bm{\hat{\theta}}}
+\newcommand{\vecx}{\bm{x}}
+
+
+\theoremstyle{definition}
+\newtheorem*{solution*}{Solution}
+\renewcommand*{\proofname}{\bf{Solution}}
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+
+\section*{Chapter 3 - The Boundary-Value Problem}
+
+\subsection*{Exercises}
+
+\begin{proof}{\textbf{Exercise 1.}}
+    Let's take a metal like copper then the electric field due to equation
+    (17) is given by
+    \begin{align*}
+        E &= \frac{Mg}{Ze}\\
+        &= \frac{1.0552\times 10^{-22}~g \cdot 981~cm/s^2}
+        {29 \cdot 4.803\times 10^{-10}~\text{esu}}\\
+        &= 0.743 \times 10^{-11}~\text{statvolt/cm}
+    \end{align*}
+    Where we used the following units conversion
+    \begin{align*}
+        \frac{statvolt}{cm} = \frac{erg}{esu\cdot cm} = \frac{dyn}{esu}
+        = \frac{g\cdot cm/s^2}{esu}
+    \end{align*}
+    Therefore the field is about $10^{-11}~\text{statvolt/cm}$
+\end{proof}
+\begin{proof}{\textbf{Exercise 2.}}
+    We know that the potential for the system of two charges is 
+    \begin{align*}
+        \Phi(\bm{x}) = \frac{q}{\sqrt{x^2 + y^2 + (z -b)^2}}
+        - \frac{q}{\sqrt{x^2 + y^2 + (z +b)^2}}
+    \end{align*}
+    then if we take $z=0$ as it is for the $x$-$y$ plane we get that
+    \begin{align*}
+        \Phi(\bm{x}) = \frac{q}{\sqrt{x^2 + y^2 + (-b)^2}}
+        - \frac{q}{\sqrt{x^2 + y^2 + b^2}}
+        = 0 
+    \end{align*}
+    Therefore regardless of the point $\bm{x} = (x,y,0)$ we take the potential
+    is always the same (zero) i.e. the $x$-$y$ plane is an equipotential surface.
+\end{proof}
+\cleardoublepage
+\begin{proof}{\textbf{Exercise 3.}}
+    Equations (22)-(24) state that
+    \begin{align*}
+        \frac{1}{X}\dv[2]{X}{x} = \alpha^2 \quad 
+        \frac{1}{Y}\dv[2]{Y}{y} = \beta^2 \quad
+        \frac{1}{Z}\dv[2]{Z}{z} = \gamma^2
+    \end{align*}
+    Since they are of the same form we solve only the first differential
+    equation but the solution applies to all of them.
+
+    Let us take $X(x) = e^{\pm \alpha x}$ we will show it's a solution to the
+    first equation. We see that
+    \begin{align*}
+        \dv[2]{X(x)}{x} = \alpha^2 e^{\pm\alpha x} = \alpha X(x)
+    \end{align*}
+    Therefore the $X(x)$ we took satisfies the equation. The same can be shown
+    for $Y$ and $Z$.
+\end{proof}
+\cleardoublepage
+\begin{proof}{\textbf{Exercise 4.}}
+    Let $m \neq n$ then
+    \begin{align*}
+        \int_0^b e^{2\pi i(n-m)y/b} ~dy
+        &= \bigg[-\frac{ib e^{2\pi i(n-m)y/b}}{2\pi(n-m)} \bigg]_0^b\\
+        &= \bigg[
+            -\frac{ibe^{2\pi i(n-m)}}{2\pi (n-m)} + \frac{ib e^0}{2\pi (n-m)}
+        \bigg]\\
+        &= \frac{ib}{2\pi (n-m)}\big[1-e^{2\pi i(n-m)}\big]\\
+        &= \frac{ib}{2\pi (n-m)}\big[1-(\cos(2\pi (n-m)) + i\sin (2\pi(n-m)))\big]\\
+        &= \frac{ib}{2\pi (n-m)}\big[1- (1 + 0)\big]\\
+        &= 0
+    \end{align*}
+    Where we used that $\sin (2\pi(n-m)) = 0$ and $\cos(2\pi (n-m)) = 1$ no
+    matter the values of $n$ or $m$.
+
+    If $n = m$ then we have that
+    \begin{align*}
+        \int_0^b e^{2\pi i (n -m) y/b} ~dy
+        &= \int_0^b e^{0} ~dy = \int_0^b~dy = \big[y\big]_0^b = b
+    \end{align*}
+    Therefore 
+    \begin{align*}
+        \int_0^b e^{2\pi i (n -m) y/b} ~dy
+        &= \begin{cases}
+            0 &\text{ if }n \neq m\\
+            b &\text{ if }n = m
+        \end{cases}
+    \end{align*}
+\end{proof}
+\cleardoublepage
+\begin{proof}{\textbf{Exercise 5.}}
+    Equation (36) states that
+    \begin{align*}
+        A_m = \frac{1}{b}\int_0^b \Phi(y, 0) e^{-2\pi i my/b}~dy
+    \end{align*}
+    Where $\Phi(y,0)$ is
+    \begin{align*}
+        \Phi(y, 0) = \begin{cases}
+            V_0 &\text{ if }~0 \leq y \leq b/2 \\
+            -V_0 &\text{ if }~b/2 < y \leq b 
+        \end{cases}
+    \end{align*}
+    Then the integral becomes
+    \begin{align*}
+        A_m &= \frac{V_0}{b}\bigg[\int_{0}^{b/2} e^{-2\pi i my/b}~dy
+        - \int_{b/2}^b e^{-2\pi i my/b}~dy \bigg]\\
+        &= \frac{V_0}{b}
+        \bigg[-\frac{be^{-2\pi i my/b}}{2\pi im}\bigg]_0^{b/2}
+        - \bigg[-\frac{be^{-2\pi i my/b}}{2\pi im}\bigg]_{b/2}^b\\
+        &= -\frac{V_0}{2\pi im}
+        \bigg[e^{-2\pi i my/b}\bigg]_0^{b/2}
+        - \bigg[e^{-2\pi i my/b}\bigg]_{b/2}^b\\
+        &= -\frac{V_0}{2\pi im}
+        \bigg[e^{-\pi i m} - 1\bigg]
+        - \bigg[e^{-2\pi i m} -e^{-\pi i m}\bigg]\\
+        &= -\frac{V_0}{2\pi im}
+        \bigg[2e^{-\pi i m} - 1 - e^{-2\pi i m}\bigg]\\
+        &= -\frac{V_0}{2\pi im}\bigg[2e^{-\pi i m} - 2\bigg]\\
+        &= -\frac{V_0}{\pi im}\bigg[e^{-\pi i m} - 1\bigg]
+    \end{align*}
+
+\end{proof}
+\cleardoublepage
+\begin{proof}{\textbf{Exercise 6.}}
+Let us consider the $i$-th term of equation (38)
+\begin{align*}
+    -\frac{V_0}{\pi i n}(e^{-\pi i n} - 1)e^{2\pi iny/b}
+    \frac{e^{-2\pi nh/b}e^{2\pi nz/b} - e^{2\pi nh/b}e^{-2\pi nz/b}}
+    {e^{-2\pi nh/b}-e^{2\pi nh/b}} 
+\end{align*}
+We see that
+\begin{align*}
+    \frac{e^{-2\pi nh/b}e^{2\pi nz/b} - e^{2\pi nh/b}e^{-2\pi nz/b}}
+    {e^{-2\pi nh/b}-e^{2\pi nh/b}}   
+\end{align*}
+is real so we want to prove the first part is real. Also, we see that
+$e^{-\pi i n} - 1 = 0$ for even $n$ and $e^{\pm\pi i n} - 1 = -2$ for odd $n$.
+So let us consider the sum
+\begin{align*}
+    &\sum_{n=-\infty}^{n=\infty}
+    -\frac{V_0}{\pi i n}(e^{-\pi i n} - 1)e^{2\pi iny/b}\\
+    &\qquad= \sum_{\substack{n=1\\n\text{ is odd}}}^{\infty}
+    -\frac{V_0}{\pi i n}(e^{-\pi i n} - 1)e^{2\pi iny/b}
+    + \frac{V_0}{\pi i n}(e^{\pi i n} - 1)e^{-2\pi iny/b}\\
+    &\qquad= \sum_{\substack{n=1\\n\text{ is odd}}}^{\infty}
+    \frac{V_0}{\pi i n}2e^{2\pi iny/b} - \frac{V_0}{\pi i n}2e^{-2\pi iny/b}\\
+    &\qquad= \sum_{\substack{n=1\\n\text{ is odd}}}^{\infty}
+    \frac{2V_0}{\pi i n}(e^{2\pi iny/b} - e^{-2\pi iny/b})\\
+    &\qquad= \sum_{\substack{n=1\\n\text{ is odd}}}^{\infty}
+    \frac{4V_0}{\pi n}\sin(2\pi ny/b)
+\end{align*}
+Where we used that $\sin(x) = (e^{ix} - e^{-ix})/2i$. Therefore the equation
+(38) is a real function.
+
+On the other hand, we can write that
+\begin{align*}
+    &\frac{e^{-2\pi nh/b}e^{2\pi nz/b} - e^{2\pi nh/b}e^{-2\pi nz/b}}
+    {e^{-2\pi nh/b}-e^{2\pi nh/b}} = \\
+    &\qquad= \frac{e^{2\pi n(z-h)/b} - e^{-2\pi n(z-h)/b}}
+    {e^{-2\pi nh/b}-e^{2\pi nh/b}}\\
+    &\qquad= \frac{\frac{e^{2\pi n(z-h)/b} - e^{-2\pi n(z-h)/b}}{2}i}
+    {-\frac{e^{2\pi nh/b}-e^{-2\pi nh/b}}{2}i}\\
+    &\qquad= -\frac{\sin(i2\pi n(z-h)/b)}{\sin(i2\pi n h/b)}\\
+    &\qquad= -\frac{\sinh(2\pi n(z-h)/b)}{\sinh(2\pi n h/b)}
+\end{align*}
+Therefore we can write equation (38) in terms of sines as follows
+\begin{align*}
+    \Phi(y,z)
+    = \sum_{\substack{n=1\\n\text{ is odd}}}^{\infty}
+    -\frac{V_0}{\pi n}\sin(2\pi ny/b)
+    \frac{\sinh(2\pi n(z-h)/b)}{\sinh(2\pi n h/b)}
+\end{align*}
+\end{proof}
+\cleardoublepage
+\begin{proof}{\textbf{Exercise 7.}}
+Let us multiply both numerator and denominator of the expression
+\begin{align*}
+    \frac{e^{-2\pi nh/b}e^{2\pi nz/b} - e^{2\pi nh/b}e^{-2\pi nz/b}}
+    {e^{-2\pi nh/b}-e^{2\pi nh/b}}
+\end{align*}
+By $e^{-2\pi nh/b}$ then
+\begin{align*}
+    \frac{e^{-2\pi nh/b}e^{2\pi nz/b} - e^{2\pi nh/b}e^{-2\pi nz/b}}
+    {e^{-2\pi nh/b}-e^{2\pi nh/b}} = 
+    \frac{e^{-4\pi nh/b}e^{2\pi nz/b} - e^{-2\pi nz/b}}
+    {e^{-4\pi nh/b}-1}
+\end{align*}
+So applying the limit as $h/b \to \infty$ gives us
+\begin{align*}
+    \lim_{h/b \to \infty} 
+    \frac{e^{-4\pi nh/b}e^{2\pi nz/b} - e^{-2\pi nz/b}}
+    {e^{-4\pi nh/b}-1} = \frac{0- e^{-2\pi nz/b}}{0 - 1} = e^{-2\pi nz/b}
+\end{align*}
+Therefore the potential as $h/b \to \infty$ becomes
+\begin{align*}
+    \lim_{h/b \to \infty} \Phi(y,z) &= 
+    \lim_{h/b \to \infty} \sum_{n=-\infty}^{n=\infty}
+    -\frac{V_0}{\pi i n}(e^{-\pi i n} - 1)e^{2\pi iny/b}
+    \frac{e^{-2\pi nh/b}e^{2\pi nz/b} - e^{2\pi nh/b}e^{-2\pi nz/b}}
+    {e^{-2\pi nh/b}-e^{2\pi nh/b}}\\
+    &= \sum_{n=-\infty}^{n=\infty}
+    -\frac{V_0}{\pi i n}(e^{-\pi i n} - 1)e^{2\pi iny/b}e^{-2\pi nz/b}
+\end{align*}
+\end{proof}
+\begin{proof}{\textbf{Exercise 8.}}
+    Let
+    $$\Phi(y,z) = \frac{4V_0}{\pi}\sin\frac{2\pi y}{b}e^{-2\pi z/b}$$
+    Then we compute $E_y$ and $E_z$ as follows
+    \begin{align*}
+        E_y &= -\pdv{\Phi(y,z)}{y}
+        = -\frac{8V_0}{b}\cos\frac{2\pi y}{b}e^{-2\pi z/b}\\
+        E_z &= -\pdv{\Phi(y,z)}{z}
+        = \frac{8V_0}{b}\sin\frac{2\pi y}{b}e^{-2\pi z/b}
+    \end{align*}
+    Therefore both components fall off exponentially with $z$.
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{Exercise 9.}}
+Let $\Phi(\rho, \phi) = R(\rho)Q(\phi)$ then Laplace's equation becomes
+\begin{align*}
+    \frac{1}{\rho}\pdv{\rho}(\rho\pdv{R(\rho)Q(\phi)}{\rho})
+    + \frac{1}{\rho^2}\pdv[2]{R(\rho)Q(\phi)}{\phi} &= 0\\
+    Q(\phi)\pdv{\rho}(\rho\pdv{R(\rho)}{\rho})
+    + \frac{R(\rho)}{\rho}\pdv[2]{Q(\phi)}{\phi} &= 0\\
+    \frac{\rho}{R(\rho)}\pdv{\rho}(\rho\pdv{R(\rho)}{\rho})
+    + \frac{1}{Q(\phi)}\pdv[2]{Q(\phi)}{\phi} &= 0
+\end{align*}
+Each of these terms must be equal to a constant since the sum must remain equal
+to 0, then we have that
+\begin{align*}
+    \frac{\rho}{R(\rho)}\pdv{\rho}(\rho\pdv{R(\rho)}{\rho}) &= k^2\\
+    \frac{1}{Q(\phi)}\pdv[2]{Q(\phi)}{\phi} &= m^2
+\end{align*}
+But since $k^2 + m^2 = 0$ then must be that $m^2 = -k^2$ hence
+\begin{align*}
+    \frac{\rho}{R(\rho)}\pdv{\rho}(\rho\pdv{R(\rho)}{\rho}) &= k^2\\
+    \frac{1}{Q(\phi)}\pdv[2]{Q(\phi)}{\phi} &= -k^2
+\end{align*}
+\end{proof}
+\begin{proof}{\textbf{Exercise 10.}}
+Let $k \neq 0$ then we can write equation (45) as
+\begin{align*}
+    \dv[2]{Q}{\phi} = -k^2Q
+\end{align*}
+This is the equation of a Simple Harmonic Oscillator for which we know 
+the solution is
+\begin{align*}
+    Q(\phi) = \cos(k\phi) \quad\text{or}\quad \sin(k\phi)
+\end{align*}
+If we let $k = 0$ then equation (45) becomes
+\begin{align*}
+    \dv[2]{Q}{\phi} = 0
+\end{align*}
+Hence the first derivative of $Q$ must be a constant i.e. 
+\begin{align*}
+    \dv{Q}{\phi} = a_1
+\end{align*}
+But for this to happen $Q$ must be a linear function, then
+\begin{align*}
+    Q = a_0 + a_1\phi
+\end{align*}
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{Exercise 11.}}
+Let $n \neq 0$ and let us define $s = \log \rho$. Also, note that for any
+function $f(\rho)$ we have that
+\begin{align*}
+    \dv{f}{\rho} &= \dv{f}{s}\dv{s}{\rho}\\
+    \dv{f}{\rho} &= \dv{f}{s}\frac{1}{\rho}\\
+    \rho\dv{f}{\rho} &= \dv{f}{s}
+\end{align*}
+Then equation (48) becomes
+\begin{align*}
+    \rho \dv{\rho}(\rho \dv{R}{\rho}) &= n^2 R\\
+    \dv{s}(\dv{R}{s}) &= n^2 R\\
+    \dv[2]{R}{s} &= n^2 R
+\end{align*}
+The solution to this differential equation is of the form $R(s) = e^{\pm ns}$
+but replacing $s$ again we get that
+\begin{align*}
+    R(\rho) = e^{\pm n \log\rho} =  (e^{\log\rho})^{\pm n} = \rho^{\pm n}
+\end{align*}
+Now, if $n = 0$ and we replace again $s = \log \rho$, equation (48) becomes
+\begin{align*}
+    \rho\dv{\rho}(\rho \dv{R}{\rho}) &= 0\\
+    \dv[2]{R}{s} &= 0
+\end{align*}
+for which we know the solution is $b_0 + b_1 s$ where $b_0$ and $b_1$ are
+constants, then replacing again $s$ we get that
+\begin{align*}
+    R(\rho) = b_0 + b_1\log\rho
+\end{align*}
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{Exercise 12.}}
+Let us compute the electric field components as follows
+\begin{align*}
+    E_\rho &= -\pdv{\Phi}{\rho}
+    = E_0\cos\phi + E_0\frac{R^2}{\rho^2}\cos\phi
+\end{align*}
+And 
+\begin{align*}
+    E_\phi &= -\frac{1}{\rho}\pdv{\Phi}{\phi}
+    = -\frac{1}{\rho}\bigg(E_0\rho\sin\phi
+    - E_0\frac{R^2}{\rho}\sin\phi\bigg)
+    = -E_0\sin\phi + E_0\frac{R^2}{\rho^2}\sin\phi
+\end{align*}
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{Exercise 13.}}
+Expression (64) states that
+\begin{align*}
+    J_n(\xi)
+    = \bigg(\frac{\xi}{2}\bigg)^n \sum_{j=0}^\infty \frac{(-1)^j}{j!(j + n)!}
+    \bigg(\frac{\xi}{2}\bigg)^{2j}
+    = \sum_{j=0}^\infty \frac{(-1)^j}{j!(j + n)!} \bigg(\frac{\xi}{2}\bigg)^{2j + n}
+\end{align*}
+And equation (63) states that
+\begin{align*}
+    \frac{1}{\xi}\dv{\xi}(\xi\dv{R}{\xi}) + \left(1 - \frac{n^2}{\xi^2}\right)R &= 0\\
+    \frac{1}{\xi}\dv{\xi}(\xi\dv{R}{\xi}) + R &= \frac{n^2}{\xi^2}R
+\end{align*}
+Let us replace expression (64) into the LHS as follows
+\begin{align*}
+    &\frac{1}{\xi}\dv{\xi}(\xi\dv{J_n}{\xi}) + J_n =\\
+    &~= \frac{1}{\xi}\dv{\xi}(
+        \xi \dv{\xi}\bigg(\sum_{j=0}^\infty \frac{(-1)^j}{j!(j + n)!}
+        \bigg(\frac{\xi}{2}\bigg)^{2j + n}\bigg)
+    )
+    + \sum_{j=0}^\infty
+    \frac{(-1)^j}{j!(j + n)!} \bigg(\frac{\xi}{2}\bigg)^{2j + n}\\
+    &~= \frac{1}{\xi}\dv{\xi}(
+        \sum_{j=0}^\infty \frac{(-1)^j(2j + n)}{j!(j + n)!}
+        \bigg(\frac{\xi}{2}\bigg)^{2j + n}
+    )
+    + \sum_{j=0}^\infty
+    \frac{(-1)^j}{j!(j + n)!} \bigg(\frac{\xi}{2}\bigg)^{2j + n}\\
+    &~= \frac{1}{\xi}
+    \sum_{j=0}^\infty \frac{(-1)^j(2j + n)^2}{j!(j + n)!2^{2j + n}}\xi^{2j + n - 1}
+    + \sum_{j=0}^\infty\frac{(-1)^j}{j!(j + n)!} \bigg(\frac{\xi}{2}\bigg)^{2j + n}\\
+    &~=
+    \sum_{j=0}^\infty \frac{(-1)^j(2j + n)^2}{j!(j + n)!2^{2j + n}}\xi^{2j + n - 2}
+    + \sum_{j=1}^\infty\frac{(-1)^{j-1}}{(j - 1)!(j + n - 1)!2^{2j + n - 2}}\xi^{2j + n -2}\\
+    &~=
+    \frac{n^2}{n!\xi^2}\frac{\xi^{n}}{2^n}
+    + \sum_{j=1}^\infty \frac{(-1)^j(2j + n)^2}{j!(j + n)!2^{2j + n}}\xi^{2j + n - 2}
+    - \sum_{j=1}^\infty\frac{(-1)^j}{(j - 1)!(j + n - 1)!2^{2j + n - 2}}\xi^{2j + n -2}\\
+    &~=
+    \frac{n^2}{n!\xi^2}\frac{\xi^{n}}{2^n}
+    + \sum_{j=1}^\infty
+    \bigg(\frac{(2j + n)^2}{\xi^2} - \frac{4j!(j + n)!}{(j -1)!(j + n -1)!\xi^2}\bigg)
+    \frac{(-1)^j}{j!(j + n)!} \bigg(\frac{\xi}{2}\bigg)^{2j + n}\\
+    &~=
+    \frac{n^2}{n!\xi^2}\frac{\xi^{n}}{2^n}
+    + \sum_{j=1}^\infty
+    \bigg(\frac{(2j + n)^2}{\xi^2} - \frac{4j(j + n)}{\xi^2}\bigg)
+    \frac{(-1)^j}{j!(j + n)!} \bigg(\frac{\xi}{2}\bigg)^{2j + n}\\
+    &~=
+    \frac{n^2}{n!\xi^2}\frac{\xi^{n}}{2^n}
+    + \sum_{j=1}^\infty \frac{n^2}{\xi^2}
+    \frac{(-1)^j}{j!(j + n)!} \bigg(\frac{\xi}{2}\bigg)^{2j + n}\\
+    &~= \sum_{j=0}^\infty \frac{n^2}{\xi^2}
+    \frac{(-1)^j}{j!(j + n)!} \bigg(\frac{\xi}{2}\bigg)^{2j + n}\\
+    &= \frac{n^2}{\xi^2}J_n
+\end{align*}
+Therefore equation (64) satisfies equation (63).
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{Exercise 14.}}
+Let $\mu = \cos\theta$ and let us note that
+\begin{align*}
+    \pdv{f}{\mu}\pdv{\mu}{\theta} &= \pdv{f}{\theta}\\
+    -\pdv{f}{\mu}\sin\theta &= \pdv{f}{\theta}\\
+    \pdv{f}{\mu} &= -\frac{1}{\sin\theta}\pdv{f}{\theta}
+\end{align*}
+Also, we have that $\sin^2\theta = 1 - \cos^2\theta = 1 - \mu^2$.\\
+Then replacing in equation (67) we get that
+\begin{align*}
+    \frac{1}{r}\pdv[2]{r}(r\Phi)
+    + \frac{1}{r^2\sin\theta}\pdv{\theta}(\sin\theta\pdv{\Phi}{\theta})
+    + \frac{1}{r^2\sin^2\theta}\pdv[2]{\Phi}{\phi} &= 0\\
+    \frac{1}{r}\pdv[2]{r}(r\Phi)
+    - \frac{1}{r^2}\pdv{\mu}(-\sin^2\theta\pdv{\Phi}{\mu})
+    + \frac{1}{r^2\sin^2\theta}\pdv[2]{\Phi}{\phi} &= 0\\
+    \frac{1}{r}\pdv[2]{r}(r\Phi)
+    + \frac{1}{r^2}\pdv{\mu}((1 - \mu^2)\pdv{\Phi}{\mu})
+    + \frac{1}{r^2(1 - \mu^2)}\pdv[2]{\Phi}{\phi} &= 0
+\end{align*}
+\end{proof}
+
+\begin{proof}{\textbf{Exercise 15.}}
+Let us define $\Phi(r, \mu) = F(r)P(\mu)$ then Laplace's equation becomes
+\begin{align*}
+    \frac{1}{r}\pdv[2]{r}(r\Phi)
+    + \frac{1}{r^2}\pdv{\mu}\bigg[(1 - \mu^2)\pdv{\Phi}{\mu}\bigg]&= 0\\
+    \frac{P}{r}\pdv[2]{r}(rF)
+    + \frac{F}{r^2}\pdv{\mu}\bigg[(1 - \mu^2)\pdv{P}{\mu}\bigg]&= 0\\
+    \frac{r}{F}\pdv[2]{r}(rF)
+    + \frac{1}{P}\pdv{\mu}\bigg[(1 - \mu^2)\pdv{P}{\mu}\bigg]&= 0
+\end{align*}
+Where in the last step we multiplied the equation by $r^2/FP$. Then we see that
+each term must be equal to a constant since the first term only depends on $r$
+and the second term only depends on $\mu$.
+\\
+Setting the constant to $l(l + 1)$ for some $l$ then must be that
+\begin{align*}
+    \frac{r}{F}\pdv[2]{r}(rF) &= l(l + 1) \quad\text{and}\quad
+    \frac{1}{P}\pdv{\mu}\bigg[(1 - \mu^2)\pdv{P}{\mu}\bigg] = -l(l + 1)
+\end{align*}
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{Exercise 16.}}
+Let $F(r) = r^l, r^{-l-1}$ then equation (72) for the first case gives us
+\begin{align*}
+    \frac{r}{F}\pdv[2]{r}(rF)
+    &= \frac{r}{r^l}\pdv[2]{r}(r^{l+1})\\
+    &= \frac{(l + 1)}{r^{l-1}}\pdv{r}(r^l)\\
+    &= \frac{l(l + 1)}{r^{l-1}}r^{l -1}\\
+    &= l(l + 1)
+\end{align*}
+And for the second case we get that
+\begin{align*}
+    \frac{r}{F}\pdv[2]{r}(rF)
+    &= \frac{r}{r^{-l-1}}\pdv[2]{r}(r^{-l})\\
+    &= \frac{-l}{r^{-l-2}}\pdv{r}(r^{-l -1})\\
+    &= \frac{-l(-l - 1)}{r^{-l-2}}r^{-l -2}\\
+    &= l(l + 1)
+\end{align*}
+Therefore both $r^l$ and $r^{-l-1}$ are solutions to the equation (72).
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{Exercise 17.}}
+Let us apply the product rule to $[(\mu^2 - 1)u']^{(4)}$ as follows
+\begin{align*}
+    [(\mu^2 - 1)u']^{(4)} &= [2\mu u' + (\mu^2 - 1)u'']'''\\
+    &= [2u' + 2\mu u'' + 2\mu u'' + (\mu^2 - 1)u''']''\\
+    &= [2u'' + 2u'' + 2\mu u''' + 2u'' + 2\mu u''' + 2\mu u''' + (\mu^2 - 1)u'''']'\\
+    &= [6u'' + 6\mu u''' + (\mu^2 - 1)u^{(4)}]'\\
+    &= 6u''' + 6u''' + 6\mu u^{(4)} + 2\mu u^{(4)} + (\mu^2 - 1)u^{(5)}\\
+    &= 12u''' + 8\mu u^{(4)} + (\mu^2 - 1)u^{(5)}
+\end{align*}
+Then we see that if we apply it $l$-times to $[(\mu^2 - 1)u']^{(l)}$
+we get that
+\begin{align*}
+    [(\mu^2 - 1)u']^{(l)} &= [2\mu u' + (\mu^2 - 1)u'']^{(l -1)}\\
+    &= [2 u' + 2\mu u'' + 2\mu u'' + (\mu^2 - 1)u''']^{(l-2)}\\
+    &= [2 u' + 4\mu u'' + (\mu^2 - 1)u''']^{(l-2)}\\
+    &= [2 u'' + 4 u'' + 4\mu u''' + 2\mu u''' + (\mu^2 - 1)u^{(4)}]^{(l-3)}\\
+    &= [6 u'' + 6\mu u''' + (\mu^2 - 1)u^{(4)}]^{(l-3)}\\
+    &...\\
+    &= l(l - 1)u^{(l-1)} + 2l\mu u^{(l)} + (\mu^2 - 1)u^{(l + 1)}
+\end{align*}
+In the same way, let us compute the $l$-derivative of $2l\mu u$ as follows
+\begin{align*}
+    [2l\mu u]^{(l)} &= [2lu + 2l\mu u']^{(l-1)}\\
+    &= [2lu' + 2lu' + 2l\mu u'']^{(l-2)}\\
+    &= [4lu' + 2l\mu u'']^{(l-2)}\\
+    &= [4lu'' + 2lu'' + 2l\mu u''']^{(l-3)}\\
+    &= [6lu'' + 2l\mu u''']^{(l-3)}\\
+    &...\\
+    &= 2l^2u^{(l - 1)} + 2l\mu u^{(l)}
+\end{align*}
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{Exercise 18.}}
+Let $v(\mu) = (\mu + 1)^l$ and $w(\mu) = (\mu - 1)^l$ then using the general
+Leibniz rule we have that
+\begin{align*}
+    \dv[l]{\mu}v(\mu)w(\mu) = 
+    \dv[l]{\mu}(\mu + 1)^l(\mu - 1)^l
+    &= \sum_{k= 0}^l
+    \begin{pmatrix}l\\k\end{pmatrix} v(\mu)^{(l - k)}w(\mu)^{(k)}
+\end{align*}
+We see that the only non-zero derivative of $w(\mu)$ valued at $\mu = 1$ is
+when $k = l$ so above equation for $\mu = 1$ becomes  
+\begin{align*}
+    \sum_{k= 0}^l
+    \begin{pmatrix}l\\k\end{pmatrix} v(\mu)^{(l - k)}w(\mu)^{(k)}\bigg|_{\mu = 1}
+    = 2^l l!
+\end{align*}
+Where we used that $\begin{pmatrix}l\\l\end{pmatrix} = 1$ and that
+$w(\mu)^{(l)}|_{\mu = 1} = l!$.\\
+Therefore
+\begin{align*}
+    P_l(1) = \frac{1}{2^ll!}\dv[l]{\mu}(\mu + 1)^l(\mu - 1)^l\bigg|_{\mu = 1}
+    &= 1
+\end{align*}
+In the same way, the only non-zero derivative of $v(\mu)$ valued at $\mu = -1$
+is when $k = 0$ so the equation for $\mu = -1$ becomes 
+\begin{align*}
+    \sum_{k= 0}^l
+    \begin{pmatrix}l\\k\end{pmatrix} v(\mu)^{(l - k)}w(\mu)^{(k)}\bigg|_{\mu = -1}
+    = l!(-2)^l
+\end{align*}
+Therefore
+\begin{align*}
+    P_l(-1) = \frac{1}{2^ll!}\dv[l]{\mu}(\mu + 1)^l(\mu - 1)^l\bigg|_{\mu = -1}
+    &= (-1)^l
+\end{align*}
+
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{Exercise 19.}}
+We want to prove by induction on $l$ that
+\begin{align*}
+    P_l(-\mu) = (-1)^lP_l(\mu)
+\end{align*}
+Then for $l = 1$ we see that
+\begin{align*}
+    P_1(-\mu) = \frac{1}{2}\dv{\nu}(\nu + 1)(\nu - 1) \bigg|_{\nu = -\mu}
+    = -\mu
+\end{align*}
+And that
+\begin{align*}
+    P_1(\mu) = \frac{1}{2}\dv{\nu}(\nu + 1)(\nu - 1) \bigg|_{\nu = \mu}
+    = \mu
+\end{align*}
+Then $P_1(-\mu) = -\mu = (-1)^1P(\mu)$ so the base case holds.
+\\
+Now, for the induction step, suppose the following is true
+\begin{align*}
+    P_{l}(-\mu) = (-1)^{l}P_{l}(\mu)
+\end{align*}
+We know that the recurrence relation for Legendre polynomials is
+\begin{align*}
+    P_{l + 1}(\mu) = \frac{(2l + 1)\mu P_l(\mu) - lP_{l-1}(\mu)}{l + 1}
+\end{align*}
+Then replacing $-\mu$ we get that
+\begin{align*}
+    P_{l + 1}(-\mu)
+    &= \frac{(2l + 1)\mu P_l(-\mu) - lP_{l-1}(-\mu)}{l + 1}\\
+    &= \frac{-(2l + 1)\mu (-1)^{l}P_{l}(\mu) - l(-1)^{l-1}P_{l-1}(\mu)}{l + 1}\\
+    &= \frac{(-1)^{l}}{l + 1}
+    \bigg[-(2l + 1)\mu P_{l}(\mu) - l(-1)^{-1}P_{l-1}(\mu)\bigg]\\
+    &= (-1)^{l + 1}\frac{(2l + 1)\mu P_{l}(\mu) - lP_{l-1}(\mu)}{l + 1}\\
+    &= (-1)^{l + 1}P_{l+1}(\mu)
+\end{align*}
+Therefore, the induction holds as well, and we have proven by induction that
+\begin{align*}
+    P_l(-\mu) = (-1)^lP_l(\mu)
+\end{align*}
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{Exercise 20.}}
+Let us compute $P_0(\mu)$, $P_1(\mu)$, $P_2(\mu)$, and $P_3(\mu)$ as follows
+\begin{align*}
+    P_0(\mu) &= \frac{1}{2^0 \cdot 0!}\dv[0]{\mu}(\mu^2 - 1)^0
+    = \frac{1}{1 \cdot 1} \cdot 1 = 1\\
+    P_1(\mu) &= \frac{1}{2^1 \cdot 1!}\dv{\mu}(\mu^2 - 1)^1
+    = \frac{1}{2} \cdot 2\mu = \mu\\
+    P_2(\mu) &= \frac{1}{2^2 \cdot 2!}\dv[2]{\mu}(\mu^2 - 1)^2
+    = \frac{1}{8}\cdot 12\mu^2 - 4 = \frac{3\mu^2 - 1}{2}\\
+    P_3(\mu) &= \frac{1}{2^3 \cdot 3!}\dv[3]{\mu}(\mu^2 - 1)^3
+    = \frac{1}{48}\cdot 120\mu^3 - 72\mu = \frac{24(5\mu^3 - 3\mu)}{48}
+    =  \frac{5\mu^3 - 3\mu}{2}
+\end{align*}
+\end{proof}
+\begin{proof}{\textbf{Exercise 21.}}
+Let $l > n$ then
+\begin{align*}
+    \int_{-1}^1 P_l(\mu)P_n(\mu)~d\mu
+    &= \frac{1}{2^ll!}\frac{1}{2^nn!}\int_{-1}^1
+    \dv[l]{\mu}(\mu^2 - 1)^l \dv[n]{\mu}(\mu^2 - 1)^n ~d\mu\\
+    &= \frac{(-1)^l}{2^{l + n}l!n!}\int_{-1}^1
+    (\mu^2 - 1)^l \dv[l+n]{\mu}(\mu^2 - 1)^n~d\mu\\
+    &= 0
+\end{align*}
+Where we used that this expression is zero because, for $l > n$, the $(l + n)$th
+derivative of a polynomial of order $2n$ vanishes.
+\\
+In the same way, if $n > l$ we have that
+\begin{align*}
+    \int_{-1}^1 P_n(\mu)P_l(\mu)~d\mu
+    &= \frac{1}{2^nn!}\frac{1}{2^ll!}\int_{-1}^1
+    \dv[n]{\mu}(\mu^2 - 1)^n \dv[l]{\mu}(\mu^2 - 1)^l~d\mu\\
+    &= \frac{(-1)^n}{2^{l + n}l!n!}\int_{-1}^1
+    (\mu^2 - 1)^n \dv[l+n]{\mu}(\mu^2 - 1)^l~d\mu\\
+    &= 0
+\end{align*}
+Where we integrated by parts repeated $n$ times and we used that the $(l + n)$th
+derivative of a polynomial of order $2l$ vanishes.
+\\
+Therefore
+\begin{align*}
+    \int_{-1}^1 P_l(\mu)P_n(\mu)~d\mu &= 0 \quad \text{for} \quad l \neq n
+\end{align*}
+
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{Exercise 22.}}
+We want to prove that
+\begin{align*}
+\int_{-1}^1 P_l(\mu)P_l(\mu)~d\mu = \frac{2}{2l + 1}
+\end{align*}
+Applying integration by parts $l$ times we get that
+\begin{align*}
+\int_{-1}^1 P_l(\mu)P_l(\mu)~d\mu
+&= \frac{1}{2^{2l}(l!)^2}\int_{-1}^1
+    \dv[l]{\mu}(\mu^2 - 1)^l \dv[l]{\mu}(\mu^2 - 1)^l ~d\mu\\[7pt]
+&= \frac{(-1)^l}{2^{2l}(l!)^2}\int_{-1}^1
+    (\mu^2 - 1)^l \dv[2l]{\mu}(\mu^2 - 1)^l~d\mu\\[7pt]
+&= \frac{(-1)^l(2l)!}{2^{2l}(l!)^2}\int_{-1}^1 (\mu^2 - 1)^l~d\mu
+\end{align*}
+Where we used that the $2l$ derivative of a polynomial of grade $2l$ is $(2l)!$.
+Let us now define $\mu = \cos\theta$ then $d\mu = -\sin\theta d\theta$ hence
+\begin{align*}
+\int_{-1}^1 P_l(\mu)P_l(\mu)~d\mu
+&= \frac{(-1)^l(2l)!}{2^{2l}(l!)^2}\int_{\pi}^{0}
+    -(\cos^2\theta - 1)^l\sin\theta~d\theta \\[7pt]
+&= \frac{(-1)^l(2l)!}{2^{2l}(l!)^2}\int_{\pi}^{0}
+    -(-1)^l(1 - \cos^2\theta)^l\sin\theta~d\theta \\[7pt]
+&= \frac{(2l)!}{2^{2l}(l!)^2}\int_{0}^{\pi}
+    \sin^{2l}\theta\sin\theta~d\theta \\[7pt]
+&= \frac{(2l)!}{2^{2l}(l!)^2}\int_{0}^{\pi} \sin^{2l + 1}\theta~d\theta
+\end{align*}
+Now, let $u = \sin^{2l}\theta$ and $v' = \sin\theta$ then integrating by parts
+we get that
+\begin{align*}
+I &= \int_{0}^{\pi} \sin^{2l + 1}\theta~d\theta\\
+&= \bigg[-\sin^{2l}\theta\cos\theta\bigg]_0^{\pi}
++ \int_{0}^{\pi} 2l\cos^2\theta\sin^{2l - 1}\theta ~d\theta\\
+&= 2l\int_{0}^{\pi} \cos^2\theta\sin^{2l - 1}\theta ~d\theta\\
+&= 2l\int_{0}^{\pi} (1 - \sin^2\theta)\sin^{2l - 1}\theta ~d\theta\\
+&= 2l\bigg[
+    \int_{0}^{\pi} \sin^{2l - 1}\theta ~d\theta
+    - \int_{0}^{\pi} \sin^{2l + 1}\theta ~d\theta
+\bigg]\\
+&= 2l\bigg[\int_{0}^{\pi} \sin^{2l - 1}\theta ~d\theta - I\bigg]
+\end{align*}
+So
+\begin{align*}
+I(2l + 1) = 2l\int_{0}^{\pi} \sin^{2l - 1}\theta ~d\theta
+\end{align*}
+We get then the following recursive equation
+\begin{align*}
+I_{2l + 1} = \frac{2l}{2l + 1}I_{2l - 1}
+\end{align*}
+Then if we apply it $l$ times we get that
+\begin{align*}
+I_{2l + 1}
+= \frac{2l}{2l + 1}\frac{2(l -1)}{2l -1}\frac{2(l - 2)}{2l - 3} ... \frac{2}{3}I_1
+= \frac{2^ll!}{(2l + 1)\frac{(2l)!}{2^{l}l!}} I_1
+= \frac{2\cdot 2^{2l} (l!)^2}{(2l + 1)(2l)!}
+\end{align*}
+Where we used that $I_1 = \int_0^\pi \sin\theta~d\theta = 2$.
+Joining the results we get that
+\begin{align*}
+\int_{-1}^1 P_l(\mu)P_l(\mu)~d\mu
+&= \frac{(2l)!}{2^{2l}(l!)^2}\frac{2\cdot 2^{2l} (l!)^2}{(2l + 1)(2l)!}
+= \frac{2}{2l + 1}
+\end{align*}
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{Exercise 23.}}
+We want to compute
+\begin{align*}
+    \frac{1}{2^m m!}\bigg[\dv[m-1]{\mu} (\mu^2 - 1)^m\bigg]_{-1}^0
+\end{align*}
+First, let us note that
+\begin{align*}
+    (\mu^2 - 1)^m = \sum_{k=0}^m \frac{m!}{(m-k)!k!} (-1)^k \mu^{2(m-k)}
+\end{align*}
+After we derivate $m-1$ times the only terms that survive are the terms
+above $m-1$ but, when we replace $\mu = 0$ the term that survives is
+the term that involves $\mu^{m-1}$ before the derivation, and upon derivations
+leaves us the following coefficient
+\begin{align*}
+    \frac{m!}{(m-k)!k!} (-1)^k (m -1)!
+\end{align*}
+Where must be that $2(m -k) = m - 1$ then we get that $k = m/2 + 1/2$,
+so replacing we have that
+\begin{align*}
+    \frac{1}{2^m m!}\bigg[\dv[m-1]{\mu} (\mu^2 - 1)^m\bigg]_{-1}^0
+    &= \frac{1}{2^m m!}\bigg[\dv[m-1]{\mu} (\mu^2 - 1)^m\bigg|_{\mu=0} - 0\bigg]\\
+    &= \frac{1}{2^m m!}
+    \cdot \frac{(-1)^{m/2 + 1/2} (m -1)!m!}{(m/2 - 1/2)!(m/2 + 1/2)!}\\
+    &= \frac{1}{2^m}
+    \cdot \frac{(-1)^{m/2 + 1/2} (m -1)!}{(m/2 - 1/2)!(m/2 + 1/2)!}
+    \cdot \frac{m(m+1)}{m(m+1)}\\
+    &= \frac{1}{2^m}
+    \frac{(-1)^{m/2 + 1/2}}{(m/2 - 1/2)!(m/2 + 1/2)!}
+    \frac{(m + 1)!}{m\cdot 2(m/2 + 1/2)}\\
+    &= \frac{1}{2^{m+1}}
+    \frac{(-1)^{m/2 + 1/2}}{[(m/2 + 1/2)!]^{2}}
+    \frac{(m + 1)!}{m}
+\end{align*}
+Where we multiplied numerator and denominator by $m(m + 1)$ and we used that
+$(m/2 - 1/2)!\cdot(m/2 + 1/2) = (m/2 + 1/2)!$
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{Exercise 24.}}
+Equation (107) states that
+\begin{align*}
+    \frac{q}{\sqrt{r^2 + r'^2 -2rr'\cos\theta}}
+    = \sum_{l=0}^\infty (A_lr^l + B_lr^{-l-1})P_l(\cos\theta)
+\end{align*}
+Let $r < r'$, when $r = 0$ the LHS becomes $q/r'$, which doesn't blow up. Then
+$B_l$ in this case must be 0, otherwise the RHS blow up at $r=0$. Let us consider
+the special case $\cos\theta = 1$, since $P_l(1) = 1$ we get that
+\begin{align*}
+    \frac{1}{\sqrt{r^2 + r'^2 -2rr'}} = 
+    \frac{1}{|r - r'|} =
+    \frac{1}{r' - r} = \sum_{l=0}^\infty A_lr^l
+\end{align*}
+On the other hand, the series expansion for $1/r' - r$ when $r < r'$ gives us
+\begin{align*}
+    \frac{1}{r' - r} = \frac{1}{r'}\frac{1}{1 - \frac{r}{r'}}
+    = \frac{1}{r'}\sum_{n = 0}^\infty \bigg(\frac{r}{r'}\bigg)^n
+\end{align*}
+Comparing with the previous equation must be that $A_l = 1/(r')^{l+1}$.
+\\
+Therefore replacing in the general equation we get that
+\begin{align*}
+    \frac{1}{\sqrt{r^2 + r'^2 -2rr'\cos\theta}}
+    = \sum_{l=0}^\infty \frac{r^l}{(r')^{l+1}}P_l(\cos\theta) 
+\end{align*}
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{Exercise 25.}}
+In this case, the quadrupole-moment tensor is given by
+\begin{align*}
+    Q^{ij} &= \int(3x'^ix'^j - \delta^{ij}r'^2)\rho dV'\\
+    &= q\bigg(3\frac{b}{2}\frac{b}{2} - \bigg(\frac{b}{2}\bigg)^2\bigg)
+    + (-q)\bigg(3\frac{(-b)}{2}\frac{(-b)}{2} - \bigg(\frac{(-b)}{2}\bigg)^2\bigg)\\
+    &= 2q\bigg(\frac{b}{2}\bigg)^2 - 2q\bigg(\frac{b}{2}\bigg)^2\\
+    &= 0
+\end{align*}
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{Exercise 26.}}
+Suppose the center of the dipole with charges $\pm q$ is at $(x_0, y_0, z_0)$
+in a coordinate system $x,y,z$.
+Then the charge $+q$ is at $(x_0, y_0, z_0 + b/2)$ and the charge $-q$ is at
+$(x_0, y_0, z_0 - b/2)$ then the dipole moment components are given by
+\begin{align*}
+    p_z &= q\bigg(z_0 + \frac{b}{2}\bigg) + (-q)\bigg(z_0 - \frac{b}{2}\bigg)
+    = qb\\
+    p_x &= qx_0 + (-q)x_0 = 0\\
+    p_y &= qy_0 + (-q)y_0 = 0
+\end{align*}
+Therefore we see that the dipole moment is independent of the position of the
+center of the dipole.
+
+For the general case of a charge distribution with zero net charge, suppose
+$\bm{x_0} = (x_0, y_0, z_0)$ is a point inside the charge distribution in a
+coordinate system $x,y,z$.
+\\
+Then the coordinates of a point $\bm{x}$ in the charge distribution can be
+written as $\bm{x} = \bm{x_0} + \bm{x}'$ where $\bm{x}'$ are the coordinates
+of the point in a coordinate system $x',y',z'$ centered at $\bm{x_0}$.
+\\
+In the coordinate system $x',y',z'$ the dipole moment is
+\begin{align*}
+    \bm{p} = \int \bm{x}'\rho(\bm{x}')dV'
+\end{align*}
+And in the coordinate system $x,y,z$ the dipole moment is
+\begin{align*}
+    \bm{p} = \int \bm{x}\rho(\bm{x})dV
+\end{align*}
+But we can also write
+\begin{align*}
+    \bm{p} &= \int (\bm{x_0} + \bm{x}')\rho(\bm{x_0} + \bm{x}')dV\\
+    &= \bm{x_0}\int \rho(\bm{x_0} + \bm{x}')dV + \int\bm{x}'\rho(\bm{x_0} + \bm{x}')dV\\
+    &= 0 + \int\bm{x}'\rho(\bm{x_0} + \bm{x}')dV\\
+    &= \int\bm{x}'\rho(\bm{x}')dV'
+\end{align*}
+Where we used in the second step that $\bm{x_0}$ is a fixed coordinate so we
+can take it out of the integral and hence the integral over the charge
+distribution is 0 because it has zero net charge.
+Finally in the last step we integrate over $V'$ instead of $V$ and hence
+numerically $\rho(\bm{x_0} + \bm{x}')$ is equal to $\rho(\bm{x}')$.
+\\
+Therefore the dipole moment is independent of the coordinate system taken.
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{Exercise 27.}}
+The potential of an ideal dipole was derived in equation (121) and it states
+the following
+\begin{align*}
+    \Phi(\bm{x}) = \frac{1}{r^3} \bm{x} \cdot \bm{p}
+\end{align*}
+This equation was derived assuming the center of the dipole was at the origin
+and hence it computes the potential at a point $\bm{x}$ at a distance $r$ from
+the origin.
+\\
+So, to compute the potential of a dipole centered at the point $\bm{x}'$ we
+need to compute first, the vector from the center of the dipole to the point
+where we want to compute the potential, this vector is $\bm{x} - \bm{x}'$.
+\\
+Then, replacing the vector in the equation gives us
+\begin{align*}
+    \Phi(\bm{x}) = \frac{1}{|\bm{x} - \bm{x}'|^3} (\bm{x} - \bm{x}') \cdot \bm{p}
+\end{align*}
+Where we used that now the length of the vector from the center of the dipole
+to $\bm{x}$ is $|\bm{x} - \bm{x}'|$ instead of $r$.
+\\
+On the other hand, let us compute $\grad (1/|\bm{x} - \bm{x}'|)$ as follows
+\begin{align*}
+    \grad \frac{1}{|\bm{x} - \bm{x}'|} &= \begin{bmatrix}
+        \pdv{x}\frac{1}{\sqrt{(x - x')^2 + (y - y')^2 + (z - z')^2}}\\[7pt]
+        \pdv{y}\frac{1}{\sqrt{(x - x')^2 + (y - y')^2 + (z - z')^2}}\\[7pt]
+        \pdv{z}\frac{1}{\sqrt{(x - x')^2 + (y - y')^2 + (z - z')^2}}
+    \end{bmatrix}
+    = \begin{bmatrix}
+        -\frac{x - x'}{(\sqrt{(x - x')^2 + (y - y')^2 + (z - z')^2})^3}\\[7pt]
+        -\frac{y - y'}{(\sqrt{(x - x')^2 + (y - y')^2 + (z - z')^2})^3}\\[7pt]
+        -\frac{z - z'}{(\sqrt{(x - x')^2 + (y - y')^2 + (z - z')^2})^3}
+    \end{bmatrix} = \\
+    &= \begin{bmatrix}
+        -\frac{x - x'}{|\bm{x}- \bm{x}'|^3}\\[7pt]
+        -\frac{y - y'}{|\bm{x}- \bm{x}'|^3}\\[7pt]
+        -\frac{z - z'}{|\bm{x}- \bm{x}'|^3}
+    \end{bmatrix}
+    = -\frac{\bm{x}- \bm{x}'}{|\bm{x}- \bm{x}'|^3}
+\end{align*}
+Therefore
+\begin{align*}
+    \Phi(\bm{x}) = \bm{p} \cdot \frac{\bm{x} - \bm{x}'}{|\bm{x} - \bm{x}'|^3}
+    = -\bm{p} \cdot \grad \frac{1}{|\bm{x} - \bm{x}'|} 
+\end{align*}
+Also, we have that
+\begin{align*}
+    \grad' \frac{1}{|\bm{x} - \bm{x}'|} &= \begin{bmatrix}
+        \pdv{x'}\frac{1}{\sqrt{(x - x')^2 + (y - y')^2 + (z - z')^2}}\\[7pt]
+        \pdv{y'}\frac{1}{\sqrt{(x - x')^2 + (y - y')^2 + (z - z')^2}}\\[7pt]
+        \pdv{z'}\frac{1}{\sqrt{(x - x')^2 + (y - y')^2 + (z - z')^2}}
+    \end{bmatrix}
+    = \begin{bmatrix}
+        \frac{x - x'}{(\sqrt{(x - x')^2 + (y - y')^2 + (z - z')^2})^3}\\[7pt]
+        \frac{y - y'}{(\sqrt{(x - x')^2 + (y - y')^2 + (z - z')^2})^3}\\[7pt]
+        \frac{z - z'}{(\sqrt{(x - x')^2 + (y - y')^2 + (z - z')^2})^3}
+    \end{bmatrix} = \\
+    &= \begin{bmatrix}
+        \frac{x - x'}{|\bm{x}- \bm{x}'|^3}\\[7pt]
+        \frac{y - y'}{|\bm{x}- \bm{x}'|^3}\\[7pt]
+        \frac{z - z'}{|\bm{x}- \bm{x}'|^3}
+    \end{bmatrix}
+    = \frac{\bm{x}- \bm{x}'}{|\bm{x}- \bm{x}'|^3}
+\end{align*}
+Therefore we also have
+\begin{align*}
+    \Phi(\bm{x}) = \bm{p} \cdot \frac{\bm{x} - \bm{x}'}{|\bm{x} - \bm{x}'|^3}
+    = \bm{p} \cdot \grad' \frac{1}{|\bm{x} - \bm{x}'|} 
+\end{align*}
+\end{proof}
+
+\end{document}
