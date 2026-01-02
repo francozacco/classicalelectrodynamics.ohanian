@@ -1,0 +1,850 @@
+\documentclass[11pt]{article}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumitem}
+\usepackage{amsmath, physics}
+\usepackage{bm}
+\usepackage{adjustbox}
+\usepackage{mathrsfs}
+\usepackage{graphicx}
+\usepackage{siunitx}
+\usepackage[mathscr]{euscript}
+
+\title{\textbf{Solved selected problems of Classical Electrodynamics - Hans Ohanian}}
+\author{Franco Zacco}
+\date{}
+
+\addtolength{\topmargin}{-3cm}
+\addtolength{\textheight}{3cm}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\diam}{\text{diam}}
+\newcommand{\cl}{\text{cl}}
+\newcommand{\bdry}{\text{bdry}}
+\newcommand{\inter}{\text{int}}
+\newcommand{\uvi}{\bm{i}}
+\newcommand{\uvj}{\bm{j}}
+\newcommand{\uvk}{\bm{k}}
+\newcommand{\hatx}{\bm{\hat{x}}}
+\newcommand{\haty}{\bm{\hat{y}}}
+\newcommand{\hatz}{\bm{\hat{z}}}
+\newcommand{\hatrho}{\bm{\hat{\rho}}}
+\newcommand{\hatphi}{\bm{\hat{\phi}}}
+\newcommand{\hatr}{\bm{\hat{r}}}
+\newcommand{\hatn}{\bm{\hat{n}}}
+\newcommand{\hattheta}{\bm{\hat{\theta}}}
+\newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}}
+
+\theoremstyle{definition}
+\newtheorem*{solution*}{Solution}
+\renewcommand*{\proofname}{\bf{Solution}}
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+
+\section*{Chapter 4 - Dielectrics}
+
+\subsection*{Problems}
+\begin{proof}{\textbf{1.}}
+Equation (8) and (9) state that
+\begin{align*}
+    \rho_P(\bm{x}') = -\nabla' \cdot \bm{P}(\bm{x}') \quad\text{and}\quad
+    \sigma_P(\bm{x}') = \bm{P}(\bm{x}')\cdot \bm{\hat{n}}
+\end{align*}
+We want to prove that the net polarization charge in the volume and on the
+surface is always zero so by integration we get that
+\begin{align*}
+    Q_{net} &=\int \sigma_P(\bm{x}')~dS' + \int \rho_P(\bm{x}')~dV'\\
+    &= \int \bm{P}(\bm{x}')\cdot \bm{\hat{n}}~dS' -\int \nabla' \cdot \bm{P}(\bm{x}')~dV'\\
+    &= \int \bm{P}(\bm{x}')\cdot \bm{\hat{n}}~dS' -\int \bm{P}(\bm{x}')\cdot \bm{\hat{n}}~dS'\\
+    &= 0
+\end{align*}
+Where we used Gauss' Theorem in the third step.
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{3.}}
+Let two long, conducting cylinders of sheet metal have radii $R$ and $3R$,
+respectively. The space between them is filled with a gas of dielectric constant
+$\varepsilon$ and the potential difference between the cylinders is $V_0$.
+From Gauss' law in a dielectric we know that
+\begin{align*}
+    \int \bm{D} \cdot d\bm{S} = Q_F
+\end{align*}
+Where $Q_F$ is the charge due to the free charges in the dielectric.
+\\
+Let us take a cylindrical Gaussian surface at $R < r < 3R$ of length $L$.
+\\
+By symmetry we have that $\bm{D} = D\hatr$ then
+\begin{align*}
+    \int_0^L\int_0^{2\pi} D\hatr \cdot rdzd\phi \hatr &= Q_F\\
+    D2\pi rL &= Q_F\\
+    D &= \frac{\lambda_F}{2\pi r}
+\end{align*}
+Where in the last step we defined $\lambda_F = Q_F / L$ to be the linear free
+charges density in between cylinders.
+\\
+Now since the dielectric constant of the gas is $\varepsilon$ we get that
+\begin{align*}
+    \bm{E} = \frac{\bm{D}}{\varepsilon} = \frac{\lambda_F}{2\pi\varepsilon r}\hatr
+\end{align*}
+But also we know that
+\begin{align*}
+    V_0 &= -\int \bm{E}\cdot d\bm{l}
+    =-\int_{R}^{3R} \frac{\lambda_F}{2\pi\varepsilon r}\hatr \cdot dr\hatr
+    = -\frac{\lambda_F}{2\pi\varepsilon} \log(3)
+\end{align*}
+Therefore we can replace $\lambda_F = -2\pi\varepsilon V_0 / \log(3)$
+to get
+\begin{align*}
+    \bm{E} = -\frac{V_0}{\log(3) r}\hatr
+\end{align*}
+And
+\begin{align*}
+    \bm{D} = -\frac{\varepsilon V_0}{\log(3) r}\hatr
+\end{align*}
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{4.}}
+Let two dielectrics with constants $\varepsilon_1$ and $\varepsilon_2$. The
+electric field with magnitude $E_1$ in the first dielectric makes an angle
+$\alpha_1$ with the normal. We want to know the angle the electric field makes 
+in the second dielectric and its magnitude.
+\\
+Because of the boundary condition imposed on $\bm{E}$ must be that
+\begin{align*}
+    E_{1\parallel} = E_{2\parallel}
+\end{align*}
+Which implies that
+\begin{align*}
+    E_1\cos(\alpha_1 - \frac{\pi}{2}) &= E_2\cos(\frac{\pi}{2} - \alpha_2)\\
+    E_1\sin(\alpha_1) &= E_2\sin(\alpha_2)
+\end{align*}
+But also from the boundary condition imposed on $\bm{D}$
+\begin{align*}
+    \varepsilon_1E_{1\perp} = D_{1\perp} = D_{2\perp} = \varepsilon_2E_{2\perp}
+\end{align*}
+We get that
+\begin{align*}
+    \varepsilon_1E_1 \sin(\alpha_1 - \frac{\pi}{2})
+    &= \varepsilon_2E_2 \sin(\frac{\pi}{2} - \alpha_2)\\
+    \varepsilon_1E_1 \cos(\alpha_1)
+    &= \varepsilon_2E_2 \cos(\alpha_2)
+\end{align*}
+So from the first boundary condition we get that
+\begin{align*}
+    E_2 = E_1\frac{\sin(\alpha_1)}{\sin(\alpha_2)}
+\end{align*}
+Therefore from the second boundary condition we get that the angle $\alpha_2$
+is
+\begin{align*}
+    E_2\cos(\alpha_2)
+    &= \frac{\varepsilon_1}{\varepsilon_2}E_1 \cos(\alpha_1)\\
+    E_1\frac{\sin(\alpha_1)}{\sin(\alpha_2)}\cos(\alpha_2)
+    &= \frac{\varepsilon_1}{\varepsilon_2}E_1 \cos(\alpha_1)\\
+    \frac{\cos(\alpha_2)}{\sin(\alpha_2)}
+    &= \frac{\varepsilon_1}{\varepsilon_2}\frac{\cos(\alpha_1)}{\sin(\alpha_1)}\\
+    \tan(\alpha_2)
+    &= \frac{\varepsilon_2}{\varepsilon_1}\tan(\alpha_1)\\
+    \alpha_2 &= \arctan(\frac{\varepsilon_2}{\varepsilon_1}\tan(\alpha_1))
+\end{align*}
+And hence the magnitude $E_2$ is
+\begin{align*}
+    E_2 = \frac{E_1\sin(\alpha_1)}{
+        \sin(\arctan(\frac{\varepsilon_2}{\varepsilon_1}\tan(\alpha_1)))
+    }
+    &= E_1\sqrt{
+        \bigg(\frac{\varepsilon_1}{\varepsilon_2}\cos\alpha_1\bigg)^2
+        + \sin^2\alpha_1
+    }
+\end{align*}
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{6.}}
+\begin{itemize}
+\item [(a)] From Gauss' law in a dielectric we know that
+\begin{align*}
+    \int\bm{D}\cdot d\bm{S} = \varepsilon\int\bm{E}\cdot d\bm{S} = 4\pi q
+\end{align*}
+Where $q$ is the free charge in the dielectric.
+\\
+Taking a spherical Gaussian surface around the point charge gives us
+\begin{align*}
+    \varepsilon E\int dS &= 4\pi q\\
+    \varepsilon E 4\pi r^2 &= 4\pi q\\
+    E &= \frac{q}{\varepsilon r^2}
+\end{align*}
+And hence the electrostatic potential is
+\begin{align*}
+    \Phi = -\int_\infty^r \bm{E} \cdot d\bm{r}
+    = -\int_\infty^r \frac{q}{\varepsilon r^2}\hatr \cdot \hatr dr
+    = -\bigg[-\frac{q}{\varepsilon r}\bigg]_\infty^r
+    = \frac{q}{\varepsilon r}
+\end{align*}
+\item [(b)] We know that the force an electron orbiting the ion $+e$ inmerse
+in the dielectric is
+\begin{align*}
+    F = -eE = -\frac{e^2}{\varepsilon r^2}
+\end{align*}
+Making this force equal to the centripetal force we get that
+\begin{align*}
+    \frac{m_e v^2}{r} = \frac{e^2}{\varepsilon r^2}
+\end{align*}
+Where $m_e$ is the mass of the electron.
+\\
+On the other hand, we know Bohr requires the quantization of the angular
+momentum so
+\begin{align*}
+    m_e v r = n\hbar
+\end{align*}
+Hence the allower radius are given by
+\begin{align*}
+    m_e^2 v^2 &= \frac{m_e e^2}{\varepsilon r}\\
+    \frac{n^2\hbar^2}{r^2} &= \frac{m_e e^2}{\varepsilon r}\\
+    r &= \frac{n^2\hbar^2\varepsilon}{m_e e^2}
+\end{align*}
+Therefore putting in the electric charge and the mass of an electron and
+the dielectric constant of silicon, the allowed radius for $n = 1$
+(the smallest orbit) is
+\begin{align*}
+    r &= \frac{\hbar^2\varepsilon}{m_e e^2}
+    = \frac{(1.0546 \times 10^{-27})^2 \cdot 11.7}
+    {(9.109\times 10^{-28}) \cdot (4.803\times 10^{-10})^2}
+    = 6.192 \times 10^{-8}~cm = 6.19 \mathring{A}
+\end{align*}
+Finally, the binding energy of the electron is
+\begin{align*}
+    E &= K + U
+    = \frac{1}{2}m_ev^2 - \frac{e^2}{\varepsilon r}
+    = \frac{1}{2}\frac{e^2}{\varepsilon r} - \frac{e^2}{\varepsilon r}
+    = \frac{e^2}{2\varepsilon r}
+\end{align*}
+Hence
+\begin{align*}
+    E &= \frac{(4.803\times 10^{-10})^2}{2\cdot 11.6 \cdot 6.192 \times 10^{-8}}
+    = 1.592\times 10^{-13}~erg = 0.099~eV
+\end{align*}
+\end{itemize}
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{7.}}
+Let a dielectric sphere of radius $R$ with dielectric constant $\varepsilon$
+and free charge $Q$ distributed uniformly over its volume.
+\\
+Let us consider first the case where $r \leq R$.
+\\
+The charge per unit of volume is $3Q/4\pi R^3$ then the charge enclosed in the
+sphere of radius $r$ is
+\begin{align*}
+    \frac{3Q}{4\pi R^3}\frac{4\pi r^3}{3} = \frac{Qr^3}{R^3}    
+\end{align*}
+Also, we know that $\bm{D}(\bm{x}) = D\hatr$ because of the symmetry of the
+sphere.
+\\
+So from Gauss' law in a dielectric we have that
+\begin{align*}
+    \int\bm{D}\cdot d\bm{S} &= 4\pi \frac{Qr^3}{R^3}\\
+    \int_0^{2\pi}\int_0^{\pi} D\hatr \cdot (r^2\sin\theta~d\theta d\phi)\hatr
+    &= 4\pi \frac{Qr^3}{R^3}\\
+    Dr^2 \int_0^{2\pi}\bigg[-\cos\theta\bigg]_0^{\pi} d\phi
+    &= 4\pi \frac{Qr^3}{R^3}\\
+    2D \bigg[\phi\bigg]_0^{2\pi} &= 4\pi \frac{Qr}{R^3}
+\end{align*}
+Hence
+$$\bm{D} = \frac{Qr}{R^3}\hatr$$
+And since the dielectric constant is $\varepsilon$ then
+$$\bm{E} = \frac{Qr}{\varepsilon R^3}\hatr$$
+Now, for the case where $r > R$ the enclosed charge is $Q$ so
+\begin{align*}
+    \int\bm{D}\cdot d\bm{S} &= 4\pi Q\\
+    \int_0^{2\pi}\int_0^{\pi} D\hatr \cdot (r^2\sin\theta~d\theta d\phi)\hatr
+    &= 4\pi Q\\
+    Dr^2 \int_0^{2\pi}\bigg[-\cos\theta\bigg]_0^{\pi} d\phi
+    &= 4\pi Q\\
+    2D \bigg[\phi\bigg]_0^{2\pi} &= 4\pi \frac{Q}{r^2}
+\end{align*}
+Hence
+\begin{align*}
+    \bm{D} = \frac{Q}{r^2}\hatr
+    \quad\text{and}\quad
+    \bm{E} = \frac{Q}{r^2}\hatr
+\end{align*}
+Where we used that $\varepsilon = 1$ in empty space.
+\\
+We know that $\bm{D} = \bm{E} + 4\pi\bm{P}$ so $\bm{P}$ for the case $r \leq R$
+is
+\begin{align*}
+    \bm{P} = \frac{1}{4\pi}(\bm{D} - \bm{E})
+    = \frac{1}{4\pi}\bigg(\frac{Qr}{R^3}\hatr - \frac{Qr}{\varepsilon R^3}\hatr\bigg)
+    = \frac{Qr}{4\pi R^3}\bigg(1 - \frac{1}{\varepsilon}\bigg)\hatr
+\end{align*}
+Then the polarization volume charge density is
+\begin{align*}
+    \rho_P = -\div \bm{P} = -\frac{1}{r^2}\pdv{(r^2 P_r)}{r}
+    = \frac{3Q}{4\pi R^3}\bigg(\frac{1}{\varepsilon} -1\bigg)
+\end{align*}
+And the polarization surface charge density is
+\begin{align*}
+    \sigma_P = \bm{P}\cdot\hatn = \bm{P}\cdot\hatr
+    = \frac{QR}{4\pi R^3}\bigg(1 - \frac{1}{\varepsilon}\bigg)
+    = \frac{Q}{4\pi R^2}\bigg(1 - \frac{1}{\varepsilon}\bigg)
+\end{align*}
+Where we used that $r = R$ for the surface.
+\\
+Finally, the net polarization volume charge is 
+\begin{align*}
+    \rho_P \cdot \frac{4}{3}\pi R^3
+    = Q\bigg(\frac{1}{\varepsilon} -1\bigg)
+\end{align*}
+And in the same way, the net polarization surface charge is
+\begin{align*}
+    \sigma_P \cdot 4\pi R^2
+    = Q\bigg(1 - \frac{1}{\varepsilon}\bigg)
+\end{align*}
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{8.}}
+Let a point charge $q$ placed at a distance $d$ above the surface of a large
+lake of dielectric liquid constant $\varepsilon$.
+\\
+We want to use the method of images to determine the electrostatic potential
+in the region above and below de surface.
+\\
+Let us place a charge $-q'$ at a distance $d$ below the surface then the
+electrostatic potential of the two charges is 
+\begin{align*}
+    \Phi_{above} &= \frac{q}{\sqrt{x^2 + y^2 + (z-d)^2}}
+    -\frac{q'}{\varepsilon\sqrt{x^2 + y^2 + (z+d)^2}}
+\end{align*}
+Now if we drop the charge $q$ and we place a charge $q''$ at a distance above
+the surface the electrostatic potential because of this charge is
+\begin{align*}
+    \Phi_{below} &= \frac{q''}{\sqrt{x^2 + y^2 + (z-d)^2}}
+\end{align*}
+We see that
+\begin{align*}
+    D_{above\perp} &= E_{above,z}
+    = \frac{q(z-d)}{(x^2 + y^2 + (z-d)^2)^{3/2}}
+    - \frac{q'(z + d)}{\varepsilon(x^2 + y^2 + (z+d)^2)^{3/2}}\\
+    D_{below\perp} &= \varepsilon E_{below,z}
+    = \frac{\varepsilon q''(z-d)}{(x^2 + y^2 + (z-d)^2)^{3/2}}
+\end{align*}
+Because of the boundary condition $D_{above\perp} = D_{below\perp}$ must be
+true at any point of the plane $z = 0$ then we can take the origin to get that
+\begin{align*}
+    D_{above\perp}\bigg|_{(0,0,0)} &= D_{below\perp}\bigg|_{(0,0,0)}\\
+    - \frac{q}{d^2} - \frac{q'}{\varepsilon d^2} &= -\frac{\varepsilon q''}{d^2}\\
+    q + \frac{q'}{\varepsilon}&= \varepsilon q''\\
+    q' &= \varepsilon(\varepsilon q'' - q)
+\end{align*}
+Now, to satisfy the boundary condition $E_{above\parallel} = E_{below\parallel}$
+we take a point where $(x,y,z) = (x, 0, 0)$ then we get that
+\begin{align*}
+    E_{above\parallel}\bigg|_{(x,0,0)} &= E_{below\parallel}\bigg|_{(x,0,0)}\\
+    \frac{qx}{(x^2 + d^2)^{3/2}} - \frac{q'x}{\varepsilon(x^2 + d^2)^{3/2}}
+    &= \frac{q''x}{(x^2 + d^2)^{3/2}}\\
+    q - \frac{q'}{\varepsilon} &= q''
+\end{align*}
+Replacing $q''$ into the first boundary condition we get that 
+\begin{align*}
+    q' &= \varepsilon\bigg(\varepsilon \bigg(q - \frac{q'}{\varepsilon}\bigg) - q\bigg)\\
+    q'+ \varepsilon q' &= \varepsilon^2 q - \varepsilon q\\
+    q' &= q\frac{\varepsilon(1 - \varepsilon)}{1 + \varepsilon}
+\end{align*}
+And hence $q''$ is
+\begin{align*}
+    q''&= q
+    - \frac{q}{\varepsilon}\frac{\varepsilon(1 - \varepsilon)}{1 + \varepsilon}\\
+    q''&= q \bigg(1 - \frac{1 - \varepsilon}{1 + \varepsilon}\bigg)\\
+    q''&= q \bigg(\frac{2\varepsilon}{1 + \varepsilon}\bigg)
+\end{align*}
+Finally, we replace the values we computed for $q'$ and $q''$ to get the electrostatic
+potential above and below the surface as follows
+\begin{align*}
+    \Phi_{above}
+    &= \frac{q}{\sqrt{x^2 + y^2 + (z-d)^2}}
+    - \frac{1-\varepsilon}{1+ \varepsilon}
+    \frac{q}{\sqrt{x^2 + y^2 + (z+d)^2}}
+\end{align*}
+And
+\begin{align*}
+    \Phi_{below}
+    &= \frac{2\varepsilon}{1 + \varepsilon}\frac{q}{\sqrt{x^2 + y^2 + (z-d)^2}}
+\end{align*}
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{19.}}[Unfinished]\\
+Let a dielectric sphere of radius $R$, the upper half of the sphere
+has a dielectric constant $\varepsilon_1$ and the lower half has a
+dielectric constant $\varepsilon_2$.
+The sphere is placed in an initially uniform electric field $\bm{E}_0$ in the
+vertical direction. We want to find the electrostatic potential inside and
+outside of the sphere.
+\\
+We divide the problem to solve into three regions, we take the region 1 when
+$r < R, \theta < \pi/2$ (the upper half), region 2 when
+$r < R, \theta > \pi/2$ (the lower half) and region 3 when $r > R$. 
+\\
+The differential equation that $\Phi$ must satisfy in all the regions is
+\begin{align*}
+    \laplacian{\Phi} = 0
+\end{align*}
+The potential associated with the field $\bm{E}_0$ is $-E_0z = -E_0r\cos\theta$
+so must be that $\Phi \to -E_0r\cos\theta$ as $r \to \infty$.
+\\
+The other boundary conditions are
+\begin{align*}
+    \pdv{\Phi_1(r,\theta)}{\theta}\bigg|_{r=R}
+    = \pdv{\Phi_2(r,\theta)}{\theta}\bigg|_{r=R}
+    = \pdv{\Phi_3(r,\theta)}{\theta}\bigg|_{r=R}
+\end{align*}
+\begin{align*}
+    \pdv{\Phi_1(r,\theta)}{r}\bigg|_{\theta=\pi/2}
+    = \pdv{\Phi_2(r,\theta)}{r}\bigg|_{\theta=\pi/2}
+\end{align*}
+\begin{align}
+    \varepsilon_1\pdv{\Phi_1(r,\theta)}{r}\bigg|_{r=R}
+    = \varepsilon_2\pdv{\Phi_2(r,\theta)}{r}\bigg|_{r=R}
+    = 1\cdot\pdv{\Phi_3(r,\theta)}{r}\bigg|_{r=R}
+\end{align}
+\begin{align}
+    \varepsilon_1\pdv{\Phi_1(r,\theta)}{\theta}\bigg|_{\theta=\pi/2}
+    = \varepsilon_2\pdv{\Phi_2(r,\theta)}{\theta}\bigg|_{\theta=\pi/2}
+\end{align}
+We saw that in the thoery that the first two conditions can be replaced by
+\begin{align}
+    \Phi_1(r,\theta)\bigg|_{r=R}
+    = \Phi_2(r,\theta)\bigg|_{r=R}
+    = \Phi_3(r,\theta)\bigg|_{r=R}
+\end{align}
+\begin{align}
+    \Phi_1(r,\theta)\bigg|_{\theta=\pi/2}
+    = \Phi_2(r,\theta)\bigg|_{\theta=\pi/2}
+\end{align}
+From chapter 3 we know that the solution in spherical coordinates must be of
+the form
+\begin{align*}
+    \Phi(r,\theta)
+    = \sum_{l=0}^\infty [A_lr^l P_l(\cos\theta) + B_lr^{-l-1} P_l(\cos\theta)]
+\end{align*}
+For the third region we get that
+\begin{align*}
+    \Phi_3(r,\theta)
+    = -E_0r\cos\theta + \sum_{l=1}^\infty A_l\frac{P_l(\cos\theta)}{r^{l+1}}
+\end{align*}
+Where we excluded all higher positive powers of $r$ because $\Phi_3$ must tend
+to $-E_0r\cos\theta$ as $r\to \infty$ and the term $A_0/r$ has been excluded
+because it would indicate the presence of some net electric charge.
+\\
+For the second region we get that
+\begin{align*}
+    \Phi_2(r,\theta)
+    = \sum_{l=0}^\infty B_lr^l P_l(\cos\theta)
+\end{align*}
+Where we excluded all negative powers of $r$ because the potential would
+diverge at $r = 0$.
+And in the same way for the first region 
+\begin{align*}
+    \Phi_1(r,\theta)
+    = \sum_{l=0}^\infty C_lr^l P_l(\cos\theta)
+\end{align*}
+From the boundary condition (3) we get that
+\begin{align*}
+    -E_0R\cos\theta + \sum_{l=1}^\infty A_l\frac{P_l(\cos\theta)}{R^{l+1}}
+    &= \sum_{l=0}^\infty B_lR^l P_l(\cos\theta)
+    = \sum_{l=0}^\infty C_lR^l P_l(\cos\theta)
+\end{align*}
+Which we know implies that 
+\begin{align*}
+    B_0 &= C_0 = 0                     & -E_0R + \frac{A_1}{R^2} &= B_1R = C_1R\\
+    \frac{A_2}{R^3} &= B_2R^2 = C_2R^2 & \frac{A_3}{R^4} &= B_3R^3 = C_3R^3\\
+    &\vdots                            & &\vdots
+\end{align*}
+Boundary condition (4) implies that
+\begin{align*}
+    \sum_{l=0}^\infty B_lr^l P_l(0)
+    &= \sum_{l=0}^\infty C_lr^l P_l(0)\\
+    \sum_{l=0}^\infty (B_l - C_l)r^l P_l(0) &= 0
+\end{align*}
+Since for the even values of $l$, $P_l(0) \neq 0$ then
+\begin{align*}
+    B_0 &= C_0 & B_2 &= C_2\\
+    B_4 &= C_4 & B_6 &= C_6\\
+    &\vdots    &     &\vdots
+\end{align*}
+Now, boundary condition (1) give us
+\begin{align*}
+    \varepsilon_1 \bigg[\sum_{l=0}^\infty lC_l R^{l-1} P_l(\cos\theta)\bigg]
+    = \varepsilon_2 \bigg[\sum_{l=0}^\infty lB_l R^{l-1} P_l(\cos\theta)\bigg]
+    = -E_0\cos\theta - \sum_{l=1}^\infty (l + 1)A_l\frac{P_l(\cos\theta)}{R^{l+2}}
+\end{align*}
+Which we know implies that
+\begin{align*}
+    -E_0 - \frac{2A_1}{R^3} &= \varepsilon_1 C_1 = \varepsilon_2 B_2
+    &  -\frac{3A_2}{R^4} &= \varepsilon_1(2C_2R) = \varepsilon_2(2B_2R)\\
+    -\frac{4A_3}{R^5} &= \varepsilon_1(3C_3R^2) = \varepsilon_2(3B_3R^2) & &...
+\end{align*}
+\begin{align*}
+\end{align*}
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{20.}}
+\begin{itemize}
+\item [(a)] Let the electrostatic potential to have initially the following value
+\begin{align*}
+    \Phi(r,\theta) = Ar^2\bigg(\frac{3\cos^2\theta - 1}{2}\bigg)
+\end{align*}
+Then the electric field initially is
+\begin{align*}
+    E_r &= -\pdv{\Phi}{r} = -Ar(3\cos^2\theta - 1)\\
+    E_\theta &= -\frac{1}{r}\pdv{\Phi}{\theta} = 3Ar\sin\theta\cos\theta
+\end{align*}
+\item [(b)] Suppose now we place a dielectric sphere of radius $R$ and
+dielectric constant $\varepsilon$ at the origin.
+
+We know that when $r\to \infty$ then 
+\begin{align*}
+    \Phi \to Ar^2\bigg(\frac{3\cos^2\theta - 1}{2}\bigg) 
+\end{align*}
+The other boundary conditions in this case are
+\begin{align*}
+    \pdv{\Phi_1(r,\theta)}{\theta}\bigg|_{r=R}
+    = \pdv{\Phi_2(r,\theta)}{\theta}\bigg|_{r=R}
+\end{align*}
+\begin{align*}
+    1\cdot\pdv{\Phi_1(r,\theta)}{r}\bigg|_{r=R}
+    = \varepsilon\pdv{\Phi_2(r,\theta)}{r}\bigg|_{r=R}
+\end{align*}
+Within the region $r > R$ the electrostatic potential has the form
+\begin{align*}
+    \Phi_1(r,\theta)
+    = Ar^2\bigg(\frac{3\cos^2\theta - 1}{2}\bigg) 
+    + \sum_{l=1}^{\infty} A_l\frac{P_l(\cos\theta)}{r^{l+1}}
+\end{align*}
+Where we excluded all higher powers of $r$ since $\Phi_1$ must tend to 
+$Ar^2(3\cos^2\theta - 1)/2$ when $r \to \infty$ and the term $A_0/r$ has been
+excluded as well since it would indicate the presence of some net electric
+charge on the dielectric sphere.
+
+Within the region $r < R$ the electrostatic potential has the form
+\begin{align*}
+    \Phi_2(r,\theta) = \sum_{l=0}^{\infty} B_lr^{l}P_l(\cos\theta)
+\end{align*}
+Here negative powers of $r$ have been excluded since otherwise the potential
+would diverge at $r = 0$.
+
+We can also write the first boundary condition as
+\begin{align*}
+    \Phi_1(r,\theta)\bigg|_{r=R} = \Phi_2(r,\theta)\bigg|_{r=R}
+\end{align*}
+So replacing, we get that
+\begin{align*}
+    AR^2\bigg(\frac{3\cos^2\theta - 1}{2}\bigg) 
+    + \sum_{l=1}^{\infty} A_l\frac{P_l(\cos\theta)}{R^{l+1}}
+    = \sum_{l=0}^{\infty} B_lR^{l}P_l(\cos\theta)
+\end{align*}
+Multiplying the equation by $P_n(\mu)$ where $\mu = \cos\theta$ and integrating
+with respect to $\mu$ between -1 and 1 we get that
+\begin{align*}
+    AR^2\int_{-1}^1\bigg(\frac{3\mu^2 - 1}{2}\bigg)P_n(\mu)~d\mu
+    + \sum_{l=1}^{\infty} A_l\int_{-1}^1\frac{P_l(\mu)P_n(\mu)}{R^{l+1}}~d\mu
+    = \sum_{l=0}^{\infty} B_lR^{l}\int_{-1}^1P_l(\mu)P_n(\mu)~d\mu
+\end{align*}
+Let $n = 1$ then since $\int_{-1}^1P_l(\mu)P_n(\mu)~d\mu = 0$ when $l \neq n$
+then
+\begin{align*}
+    AR^2\int_{-1}^1P_2(\mu)P_1(\mu)~d\mu
+    + \frac{A_1}{R^{2}}\int_{-1}^1P_1(\mu)P_1(\mu)~d\mu
+    &= B_1R\int_{-1}^1P_1(\mu)P_1(\mu)~d\mu\\
+    AR^2\int_{-1}^1P_2(\mu)P_1(\mu)~d\mu
+    + \frac{2}{3}\frac{A_1}{R^{2}}
+    &= \frac{2}{3}B_1R\\
+    \frac{2}{3}\frac{A_1}{R^{2}} &= \frac{2}{3}B_1R\\
+    \frac{A_1}{R^{2}} &= B_1R
+\end{align*}
+Where we used that $\int_{-1}^1 P_l(\mu)P_l(\mu)~d\mu = 2/(2l + 1)$
+and that $(3\mu^2 - 1)/2 = P_2(\mu)$.
+Let now $n = 2$ then we get that
+\begin{align*}
+    AR^2\int_{-1}^1\bigg(\frac{3\mu^2 - 1}{2}\bigg)^2~d\mu
+    + \frac{2}{5}\frac{A_2}{R^{3}}
+    &= \frac{2}{5}B_2R^2\\
+    \frac{2}{5}AR^2
+    + \frac{2}{5}\frac{A_2}{R^{3}}
+    &= \frac{2}{5}B_2R^2\\
+    AR^2 + \frac{A_2}{R^{3}} &= B_2R^2
+\end{align*}
+For $n = 3$ we get that
+\begin{align*}
+    AR^2\int_{-1}^1P_2(\mu)P_3(\mu) + \frac{2}{7}\frac{A_3}{R^{4}}
+    &= \frac{2}{7}B_3R^3\\
+    \frac{A_3}{R^{4}}
+    &= B_3R^3
+\end{align*}
+We can continue this process to obtain the rest of the constants.
+
+On the other hand, the second boundary condition demands
+\begin{align*}
+    2AR\bigg(\frac{3\cos^2\theta - 1}{2}\bigg) 
+    - \sum_{l=1}^{\infty} (l + 1)A_l\frac{P_l(\cos\theta)}{R^{l+2}}
+    = \varepsilon\bigg(\sum_{l=0}^{\infty} lB_lR^{l-1}P_l(\cos\theta)\bigg)
+\end{align*}
+Again, multiplying the equation by $P_n(\mu)$ where $\mu = \cos\theta$ and integrating
+with respect to $\mu$ between -1 and 1 we get that
+\begin{align*}
+    &2AR\int_{-1}^1 P_2(\mu)P_n(\mu)~d\mu
+    - \sum_{l=1}^{\infty} (l + 1)\frac{A_l}{R^{l+2}}
+    \int_{-1}^1P_l(\mu)P_n(\mu)~d\mu\\
+    &\quad= \varepsilon\bigg(\sum_{l=0}^{\infty} lB_lR^{l-1}
+    \int_{-1}^1 P_l(\mu)P_n(\mu)~d\mu\bigg)
+\end{align*}
+Following the same procedure we get that
+\begin{align*}
+    - 2\frac{A_1}{R^{3}} &= \varepsilon B_1
+    & 2AR - 3\frac{A_2}{R^4} &= \varepsilon 2B_2R\\
+    - 4\frac{A_3}{R^5} &= \varepsilon 3B_3R^2
+    &  - 5\frac{A_4}{R^6} &= \varepsilon 4B_4R^3\\
+    &\vdots & &\vdots
+\end{align*}
+Now we solve the system of linear equations, for $A_1$ we get that
+\begin{align*}
+    - 2\frac{A_1}{R^{3}} &= \varepsilon \frac{A_1}{R^3}\\
+    -A_1 \bigg(\frac{2}{R^{3}} + \frac{\varepsilon}{R^3}\bigg) &= 0\\
+    A_1 &= 0
+\end{align*}
+And hence $B_1 = 0$. This is also the case for $A_3, A_4, ...$ and
+$B_3, B_4, ..$ but for $A_2$ and $B_2$ we get that
+\begin{align*}
+    2AR - 3\frac{A_2}{R^4} &= \varepsilon 2B_2 R\\
+    2AR^2 - 3\frac{A_2}{R^3} &= \varepsilon 2B_2 R^2\\
+    2AR^2 - 3\frac{A_2}{R^3} &= \varepsilon \bigg(2AR^2 + 2\frac{A_2}{R^3}\bigg)\\
+    -\frac{A_2}{R^3}(3 + 2\varepsilon)
+    &= 2AR^2(\varepsilon - 1)\\
+    A_2 &= \frac{2AR^5(1 - \varepsilon)}{(3 + 2\varepsilon)}
+\end{align*}
+And hence 
+\begin{align*}
+    B_2R^2 &= AR^2 + \frac{2AR^5(1 - \varepsilon)}{(3 + 2\varepsilon)}\frac{1}{R^3}\\
+    B_2 &= A + \frac{2A(1 - \varepsilon)}{(3 + 2\varepsilon)}\\
+    B_2 &= \frac{3A + 2A\varepsilon + 2A - 2A\varepsilon}{(3 + 2\varepsilon)}\\
+    B_2 &= \frac{5A}{(3 + 2\varepsilon)}
+\end{align*}
+Therefore the equation for the region $r > R$ is
+\begin{align*}
+    \Phi_1(r,\theta) &= Ar^2\bigg(\frac{3\cos^2\theta - 1}{2}\bigg) 
+    + A_2\frac{P_2(\cos\theta)}{r^3}\\
+    &= Ar^2\bigg(\frac{3\cos^2\theta - 1}{2}\bigg) 
+    + \frac{2AR^5(1 - \varepsilon)}{(3 + 2\varepsilon)r^3}
+    \bigg(\frac{3\cos^2\theta - 1}{2}\bigg)
+\end{align*}
+And the equation for the region $r < R$ is
+\begin{align*}
+    \Phi_2(r,\theta) &= B_2r^2P_2(\cos\theta)
+    = \frac{5Ar^2}{(3 + 2\varepsilon)}\bigg(\frac{3\cos^2\theta - 1}{2}\bigg)
+\end{align*}
+\item [(c)] The net translational force only depends on the free charges and
+since there are no free charges then the net translational force is 0.
+\end{itemize}
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{21.}}
+Let a conducting sphere of radius $R$ at potential zero be surrounded by a
+concentric spherical shell of dielectric material of inner radius $R$, outer
+radius $2R$ and dielectric constant $\varepsilon = 7/5$. Also, let us suppose
+that the sphere with its dielectric is placed in an initially uniform electric
+field $\bm{E}_0$.
+
+\begin{itemize}
+\item [(a)] 
+We will consider two regions to determine $\Phi$, the region when $R < r < 2R$
+where $\Phi = \Phi_1$ and the region where $r > 2R$ where $\Phi = \Phi_2$.
+\\
+The potential associated with the field $\bm{E}_0$ is $-E_0z = -E_0r\cos\theta$
+so must be that $\Phi \to -E_0r\cos\theta$ as $r \to \infty$.
+\\
+The other boundary conditions are
+\begin{align*}
+    \pdv{\Phi_1(r,\theta)}{\theta}\bigg|_{r=2R}
+    &= \pdv{\Phi_2(r,\theta)}{\theta}\bigg|_{r=2R}\\[7pt]
+    \text{or}\\
+    \Phi_1(r,\theta)\bigg|_{r=2R} &= \Phi_2(r,\theta)\bigg|_{r=2R}
+\end{align*}
+And
+\begin{align*}
+    \Phi_1(r,\theta)\bigg|_{r=R} &= 0\\[7pt]
+    \varepsilon\cdot\pdv{\Phi_1(r,\theta)}{r}\bigg|_{r=2R}
+    &= 1\cdot \pdv{\Phi_2(r,\theta)}{r}\bigg|_{r=2R}
+\end{align*}
+Within the region $r > 2R$ the electrostatic potential has the form
+\begin{align*}
+    \Phi_2(r,\theta) = -E_0r\cos\theta
+    + \sum_{l=1}^\infty A_l\frac{P_l(\cos\theta)}{r^{l+1}}
+\end{align*}
+Within the region $R < r < 2R$ the electrostatic potential has the form
+\begin{align*}
+    \Phi_1(r,\theta) = \sum_{l=0}^\infty B_lr^lP_l(\cos\theta)
+    + C_l\frac{P_l(\cos\theta)}{r^{l+1}}
+\end{align*}
+Now, using the first boundary condition we get that
+\begin{align*}
+    -2E_0R\cos\theta
+    + \sum_{l=1}^\infty A_l\frac{P_l(\cos\theta)}{(2R)^{l+1}}
+    = \sum_{l=0}^\infty B_l(2R)^lP_l(\cos\theta)
+    + C_l\frac{P_l(\cos\theta)}{(2R)^{l+1}}
+\end{align*}
+Multiplying the whole equation by $P_1(\mu)$ and integrating between -1 and 1
+we get that
+\begin{align*}
+    -2E_0R\int_{-1}^1 \mu P_1(\mu)~d\mu
+    &+ \frac{A_1}{4R^{2}}\int_{-1}^1 (P_1(\mu))^2 ~d\mu =\\
+    &= 2B_1R \int_{-1}^1 (P_1(\mu))^2 ~d\mu 
+    + \frac{C_1}{4R^{2}}\int_{-1}^1 (P_1(\mu))^2 ~d\mu \\
+    -2E_0R\int_{-1}^1 \mu^2 ~d\mu
+    + \frac{A_1}{4R^{2}}\frac{2}{3}
+    &= 2B_1R \frac{2}{3}
+    + \frac{C_1}{4R^{2}}\frac{2}{3}\\
+    -2E_0R + \frac{A_1}{4R^{2}} &= 2B_1R + \frac{C_1}{4R^{2}}
+\end{align*}
+Following the same method for $n = 2, 3, ...$ we get that
+\begin{align*}
+    \frac{A_2}{(2R)^{3}} &= B_2(2R)^2 + \frac{C_2}{(2R)^3} \\
+    \frac{A_3}{(2R)^4} &= B_3(2R)^3 + \frac{C_3}{(2R)^4}\\
+    &~\vdots
+\end{align*}
+Using that $\Phi_1|_{r=R} = 0$ we see that
+\begin{align*}
+    \sum_{l=0}^\infty B_lR^lP_l(\cos\theta)
+    + C_l\frac{P_l(\cos\theta)}{R^{l+1}} &= 0\\
+    \sum_{l=0}^\infty P_l(\cos\theta)\bigg(B_lR^l
+    + \frac{C_l}{R^{l+1}}\bigg) &= 0
+\end{align*}
+Then must be that 
+\begin{align*}
+    B_lR^l + \frac{C_l}{R^{l+1}} &= 0\\
+    B_lR^l &= -\frac{C_l}{R^{l+1}}
+\end{align*}
+Using the last boundary condition we get that
+\begin{align*}
+    \varepsilon\bigg[\sum_{l=0}^\infty B_ll(2R)^{l-1}P_l(\cos\theta)
+    - (l + 1)C_l\frac{P_l(\cos\theta)}{(2R)^{l+2}} \bigg]
+    &= -E_0\cos\theta
+    - \sum_{l=1}^\infty (l + 1)A_l\frac{P_l(\cos\theta)}{(2R)^{l+2}}
+\end{align*}
+And following the same procedure to determine the value of the constants we
+get that
+\begin{align*}
+    \varepsilon\bigg[B_1 - \frac{2C_1}{(2R)^{3}}\bigg]
+    &= - E_0 - \frac{2A_1}{(2R)^{3}}\\
+    \varepsilon\bigg[2B_2(2R) - \frac{3C_2}{(2R)^{4}}\bigg]
+    &= - \frac{3A_2}{(2R)^{4}}\\
+    \varepsilon\bigg[3B_3(2R)^2 - \frac{4C_3}{(2R)^{5}}\bigg]
+    &= - \frac{4A_3}{(2R)^{5}}\\
+    &\vdots
+\end{align*}
+Let us repalce $B_1 = - C_1/R^3$ in the first equation we have for $A_1, B_1$
+and $C_1$
+\begin{align*}
+    -2E_0R + \frac{A_1}{4R^{2}} &= 2B_1R + \frac{C_1}{4R^{2}}\\
+    -2E_0R + \frac{A_1}{4R^{2}} &= -2\frac{C_1}{R^2}+ \frac{C_1}{4R^{2}}\\
+    -2E_0R + \frac{A_1}{4R^{2}} &= -7\frac{C_1}{4R^2}
+\end{align*}
+Also, we see that
+\begin{align*}
+    \varepsilon\bigg[-\frac{C_1}{R^3} - \frac{C_1}{4R^3}\bigg]
+    &= - E_0 - \frac{2A_1}{(2R)^{3}}\\
+    \varepsilon\frac{5C_1}{4R^3} &= E_0 + \frac{2A_1}{(2R)^{3}}\\
+    7C_1 &= 4E_0R^3 + A_1\\
+    C_1 &= \frac{4}{7}E_0R^3 + \frac{A_1}{7}
+\end{align*}
+Then replacing $C_1$ gives us
+\begin{align*}
+    -2E_0R + \frac{A_1}{4R^{2}} &= -E_0R - \frac{A_1}{4R^2}\\
+    \frac{2A_1}{4R^{2}} &= E_0R \\
+    A_1 &= 2E_0R^3 
+\end{align*}
+This, also tells us that 
+\begin{align*}
+    C_1 = \frac{6}{7}E_0R^3
+    \qquad
+    B_1 = -\frac{6}{7}E_0
+\end{align*}
+For $A_2$ we get that
+\begin{align*}
+    \frac{A_2}{8R^3} &= 4B_2R^2 + \frac{C_2}{8R^3}\\
+    \frac{A_2}{8R^3} &= -4\frac{C_2}{R^3} + \frac{C_2}{8R^3}\\
+    A_2 &= -31C_2
+\end{align*}
+And hence
+\begin{align*}
+    \frac{7}{5}\bigg[4B_2R - \frac{3C_2}{16R^{4}}\bigg]
+    &= - \frac{3A_2}{16R^{4}}\\
+    \frac{28}{5}C_2 - \frac{21C_2}{80R^2}
+    &= \frac{93C_2}{16R^2}\\
+    C_2\bigg(\frac{28}{5}- \frac{21}{80R^2} - \frac{93}{16R^2}\bigg)&= 0\\
+    C_2 &= 0
+\end{align*}
+This also imply that $A_2 = B_2 = 0$.
+We can show the same for $A_3, B_3, C_3$ and the rest of the constants.
+
+Therefore $\Phi_1$ and $\Phi_2$ become
+\begin{align*}
+    \Phi_1(r,\theta)
+    &= -\frac{6}{7}E_0\bigg(r  - \frac{R^3}{r^2}\bigg)\cos\theta
+    &\text{when}&\quad R < r < 2R\\
+    \Phi_2(r,\theta) &= -E_0r\cos\theta + \frac{2E_0R^3}{r^2}\cos\theta
+    &\text{when}&\quad r > 2R
+\end{align*}
+Where we used the only non-zero values we determined i.e. $A_1, B_1$ and $C_1$.
+
+\item [(b)] We know that if there exist free surface charge density at the
+interface between the conducting sphere and the dielectic then
+$$D_{diel\perp} - D_{cond\perp}
+= \varepsilon E_{diel\perp} - E_{cond\perp} =
+E_{r}(\varepsilon - 1) = 4\pi\sigma_F$$
+where $\sigma_F$ is the free surface charge density.
+\\
+So we need to determine $E_\perp = E_r$ at $R$, hence
+\begin{align*}
+    E_r\bigg|_{r =R} &= \pdv{\Phi_1(r,\theta)}{r}\bigg|_{r =R}\\
+    &= \bigg[-\frac{6}{7}E_0\bigg(1  - \frac{2R^3}{r^3}\bigg)\cos\theta\bigg]_{r=R}\\
+    &= \frac{6}{7}E_0\cos\theta
+\end{align*}
+Then $\sigma_F$ is given by
+\begin{align*}
+    4\pi\sigma_F &= E_r(\varepsilon - 1)\\
+    \sigma_F &= \frac{1}{4\pi}\frac{6}{7}E_0\cos\theta\bigg(\frac{7}{5} - 1\bigg)\\
+    \sigma_F &= \frac{1}{\pi}\frac{3}{35}E_0\cos\theta
+\end{align*}
+
+\item [(c)] To find the bound charge density induced on the surface of the
+dielectric at $r = R$ we need to find first $P_r$ (the radial component of the
+polarization) since $\sigma_P = \bm{P}\cdot\hatr = P_r$.
+\\
+Since 
+\begin{align*}
+    \bm{P} = \frac{\varepsilon - 1}{4\pi}\bm{E}
+\end{align*}
+Then
+\begin{align*}
+    P_r = \frac{1}{10\pi}E_r = \frac{1}{\pi}\frac{3}{35}E_0\cos\theta
+\end{align*}
+Therefore
+\begin{align*}
+    \sigma_P = P_r = \frac{1}{\pi}\frac{3}{35}E_0\cos\theta
+\end{align*}
+
+
+\end{itemize}
+\end{proof}
+\end{document}
