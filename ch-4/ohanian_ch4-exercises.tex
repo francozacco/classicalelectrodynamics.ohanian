@@ -351,4 +351,49 @@ So now, replacing $\varep_2 = 1$ we get that
     \frac{3(\varep_1 - 1)}{1 + 2\varepsilon_1}\cos\theta
 \end{align*}
 \end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{Exercise 7.}}
+The average component of $\bm{p}$ along $\bm{E}$ is
+\begin{align*}
+    \langle p_z \rangle = \frac{\int_0^\pi p \cos\theta e^{pE\cos\theta /kT}2\pi \sin\theta~d\theta}
+    {\int_0^\pi e^{pE\cos\theta / kT}2\pi \sin\theta~d\theta}
+\end{align*}
+Let $\mu = \cos\theta$ then $d\mu = -\sin\theta d\theta$ so the integrals
+become
+\begin{align*}
+    \langle p_z \rangle
+    &= \frac{-2\pi p\int_1^{-1} \mu e^{pE\mu /kT}~d\mu}
+    {-2\pi\int_1^{-1} e^{pE\mu / kT}~d\mu}\\
+    &= \frac{p\int_{-1}^1 \mu e^{pE\mu /kT}~d\mu}
+    {\int_{-1}^1 e^{pE\mu / kT}~d\mu}\\
+    &= \frac{p\frac{k^2T^2}{p^2E^2}\bigg[(\frac{pE\mu}{kT} - 1)e^{pE\mu /kT}\bigg]_{-1}^1}
+    {\frac{kT}{pE}\bigg[e^{pE\mu / kT}\bigg]_{-1}^1}\\
+    &= \frac{kT}{E}
+    \frac{\bigg[(\frac{pE}{kT} - 1)e^{pE /kT} + (\frac{pE}{kT} + 1)e^{-pE /kT}\bigg]}
+    {\bigg[e^{pE / kT} - e^{-pE / kT}\bigg]}\\
+    &= \frac{kT}{E}
+    \frac{\bigg[\frac{pE}{kT}(e^{pE /kT}+ e^{-pE /kT}) - (e^{pE /kT} - e^{-pE /kT})\bigg]}
+    {2\sinh(\frac{pE}{kT})}\\
+    &= \frac{kT}{E}
+    \frac{\frac{pE}{kT}2\cosh(\frac{pE}{kT}) - 2\sinh(\frac{pE}{kT})}
+    {2\sinh(\frac{pE}{kT})}\\
+    &= \frac{kT}{E}\bigg(\frac{pE}{kT}\coth(\frac{pE}{kT}) - 1\bigg)\\
+    &= p\bigg(\coth(\frac{pE}{kT}) - \frac{kT}{pE}\bigg)
+\end{align*}
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{Exercise 8.}}
+Let $pE/kT \ll 1$ then we can approximate the coth by its Taylor series
+\begin{align*}
+    \coth(x) = x^{-1} + \frac{x}{3} + ...
+\end{align*}
+Then the formula (64) becomes 
+\begin{align*}
+    \langle p_z \rangle &\approx
+    p\bigg(\frac{kT}{pe} + \frac{pE}{3kT} - \frac{kT}{pE}\bigg)
+    = \frac{p^2E}{3kT}
+\end{align*}
+\end{proof}
 \end{document}
