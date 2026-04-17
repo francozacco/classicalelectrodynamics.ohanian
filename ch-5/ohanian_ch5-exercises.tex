@@ -1,0 +1,196 @@
+\documentclass[11pt]{article}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumitem}
+\usepackage{amsmath, physics}
+\usepackage{bm}
+\usepackage{adjustbox}
+\usepackage{mathrsfs}
+\usepackage{graphicx}
+% \usepackage{siunitx}
+\usepackage{physunits}
+\usepackage[mathscr]{euscript}
+
+\title{\textbf{Solved selected problems of Classical Electrodynamics - Hans Ohanian}}
+\author{Franco Zacco}
+\date{}
+
+\addtolength{\topmargin}{-3cm}
+\addtolength{\textheight}{3cm}
+
+\newcommand{\Nat}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\diam}{\text{diam}}
+\newcommand{\cl}{\text{cl}}
+\newcommand{\bdry}{\text{bdry}}
+\newcommand{\inter}{\text{int}}
+\newcommand{\hatx}{\bm{\hat{x}}}
+\newcommand{\haty}{\bm{\hat{y}}}
+\newcommand{\hatz}{\bm{\hat{z}}}
+\newcommand{\hatr}{\bm{\hat{r}}}
+\newcommand{\hatn}{\bm{\hat{n}}}
+\newcommand{\hatrho}{\bm{\hat{\rho}}}
+\newcommand{\hatphi}{\bm{\hat{\phi}}}
+\newcommand{\hattheta}{\bm{\hat{\theta}}}
+\newcommand{\vecx}{\bm{x}}
+\newcommand{\varep}{\varepsilon}
+
+
+\theoremstyle{definition}
+\newtheorem*{solution*}{Solution}
+\renewcommand*{\proofname}{\bf{Solution}}
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+
+\section*{Chapter 5 - Electric Energy}
+
+\subsection*{Exercises}
+
+\begin{proof}{\textbf{Exercise 1.}}
+We want to compute the follwoing integral
+\begin{align*}
+    -\frac{qq'}{4\pi}\frac{1}{|\bm{x'}|}\int \nabla\cdot\nabla\frac{1}{|\bm{x}|}~dV
+\end{align*}
+So applying Gauss' theorem we have that
+\begin{align*}
+    -\frac{qq'}{4\pi}\frac{1}{|\bm{x'}|}\int \nabla\cdot\nabla\frac{1}{|\bm{x}|}~dV
+    &= -\frac{qq'}{4\pi}\frac{1}{|\bm{x'}|}
+    \int \nabla\frac{1}{|\bm{x}|}\cdot \hatn~dS\\
+    &= -\frac{qq'}{4\pi}\frac{1}{|\bm{x'}|}
+    \int_0^{2\pi}\int_0^{\pi} \pdv{r}(\frac{1}{r})
+    ~r^2\sin\theta d\theta d\phi\\
+    &= \frac{qq'}{4\pi}\frac{1}{|\bm{x'}|}
+    \int_0^{2\pi}\int_0^{\pi} \frac{1}{r^2}~r^2\sin\theta d\theta d\phi\\
+    &= \frac{qq'}{4\pi}\frac{1}{|\bm{x'}|}
+    [-\cos\pi + \cos 0]~[2\pi - 0]\\
+    &= \frac{qq'}{|\bm{x'}|}
+\end{align*}
+Where in the second equality we used that the normal direction in spherical
+coordinates is the radial direction and hence the gradient component we need
+is the radial one.
+\\
+Therefore
+\begin{align*}
+    U = \text{constant} + \frac{qq'}{|\bm{x'}|}
+\end{align*}
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{Exercise 2.}}
+Let a charged particle in a circular orbit in a Coulomb field.
+\\
+Since the particle is on a Coulomb field then the force exerted to it is
+\begin{align*}
+    \bm{F} = q\bm{E} = q\frac{q'}{r^2}\hatr
+\end{align*}
+Where $q'$ is the charge that's generating the field and $r$ is the distance
+that separates them.
+\\
+Then the potential energy is given by
+\begin{align*}
+    - \dv{V}{r} &= F\\
+    V &= -qq'\int \frac{1}{r^2}~dr\\
+    V &= \frac{qq'}{r}
+\end{align*}
+On the other hand, since the particle is in circular motion with respect to
+the other charge $q'$ then the centripetal force it feels is
+\begin{align*}
+    \bm{F}_c = -m \frac{v^2}{r}\hatr
+\end{align*}
+But then, must be that
+\begin{align*}
+    \bm{F} = q\frac{q'}{r^2}\hatr &= -m \frac{v^2}{r}\hatr = \bm{F}_c
+\end{align*}
+And hence the tangential velocity $v$ is
+\begin{align*}
+    v^2 = -\frac{qq'}{mr}
+\end{align*}
+So the kinetic energy gives us
+\begin{align*}
+    T = \frac{1}{2}mv^2 = -\frac{1}{2}m\frac{qq'}{mr}
+    = -\frac{1}{2}\frac{qq'}{r}
+\end{align*}
+Since $r$ doesn't change with time because we are in a circular orbit then
+the instantaneous kinetic energy is equal to the average kinetic energy and
+the instantaneous potential energy is equal to the average potential energy.
+\\
+Therefore
+\begin{align*}
+    \overline{T} = -\frac{1}{2}\frac{qq'}{r} = -\frac{1}{2}\overline{V}
+\end{align*}
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{Exercise 3.}}
+Let us take a Gaussian surface shaped as a box where one face is inside the
+metallic plate with charge $Q$ and the other face is inside the dielectric,
+then by Gauss law for dielectrics we have that
+\begin{align*}
+    \int \bm{D}\cdot d\bm{S} &= 4\pi Q_{enc}\\
+    \int_{plate} \bm{D}\cdot d\bm{S} + \int_{dielec} \bm{D}\cdot d\bm{S} &= 4\pi Q\\
+    0 + D A &= 4\pi Q
+\end{align*}
+Where we used that $D$ inside the metallic plate is 0 and by symmetry we
+neglected the integrals with respect to the other faces of the box.
+Therefore
+\begin{align*}
+    D &= \frac{4\pi Q}{A} = 4\pi \sigma
+\end{align*}
+
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{Exercise 4.}}
+Equation (34) states that
+\begin{align*}
+    F = -\frac{2\pi Q^2}{\epsilon A}
+\end{align*}
+And equation (40) states that
+\begin{align*}
+    F = -\frac{\epsilon A}{8\pi}\bigg(\frac{\Delta \Phi}{l}\bigg)^2
+\end{align*}
+If we let the potential difference to be expressed in terms of the charge $Q$
+as in equation (36)
+\begin{align*}
+    \Delta\Phi = \frac{4\pi Ql}{A\epsilon}
+\end{align*}
+Then we get that
+\begin{align*}
+    F &= -\frac{\epsilon A}{8\pi}\bigg(\frac{\Delta \Phi}{l}\bigg)^2
+    = -\frac{\epsilon A}{8\pi}\bigg(\frac{4\pi Q}{A\epsilon}\bigg)^2
+    = -\frac{\epsilon A}{8\pi}\frac{16\pi^2 Q^2}{A^2\epsilon^2}
+    = -\frac{2\pi Q^2}{A\epsilon}
+\end{align*}
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{Exercise 5.}}
+Let us take a Gaussian surface shaped as a box where one face is inside the
+metallic plate with charge $Q$ and the other face is between the two plates,
+then by Gauss law we have that
+\begin{align*}
+    \int \bm{E}\cdot d\bm{S} &= 4\pi Q_{enc}\\
+    \int_{plate} \bm{E}\cdot d\bm{S} + \int_{outside} \bm{E}\cdot d\bm{S} &= 4\pi Q\\
+    0 + E A &= 4\pi Q
+\end{align*}
+Where we used that $E$ inside the metallic plate is 0 and by symmetry we
+neglected the integrals with respect to the other faces of the box.
+Therefore
+\begin{align*}
+    E &= \frac{4\pi Q}{A}
+\end{align*}
+On the other hand, since $E$ is in the direction perpendicular to the plates
+we have that
+\begin{align*}
+    \Delta \Phi = E l = \frac{4\pi Q l}{A}
+\end{align*}
+Hence the capacitance is 
+\begin{align*}
+    C = \frac{Q}{\Delta\Phi} = \frac{QA}{4\pi Q l} = \frac{A}{4\pi l}
+\end{align*}
+\end{proof}
+\end{document}
