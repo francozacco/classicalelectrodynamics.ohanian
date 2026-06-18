@@ -1,0 +1,181 @@
+\documentclass[11pt]{article}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumitem}
+\usepackage{amsmath, physics}
+\usepackage{bm}
+\usepackage{adjustbox}
+\usepackage{mathrsfs}
+\usepackage{graphicx}
+% \usepackage{siunitx}
+\usepackage{physunits}
+\usepackage[mathscr]{euscript}
+
+\title{\textbf{Solved selected problems of Classical Electrodynamics - Hans Ohanian}}
+\author{Franco Zacco}
+\date{}
+
+\addtolength{\topmargin}{-3cm}
+\addtolength{\textheight}{3cm}
+
+\newcommand{\Nat}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\diam}{\text{diam}}
+\newcommand{\cl}{\text{cl}}
+\newcommand{\bdry}{\text{bdry}}
+\newcommand{\inter}{\text{int}}
+\newcommand{\hatx}{\bm{\hat{x}}}
+\newcommand{\haty}{\bm{\hat{y}}}
+\newcommand{\hatz}{\bm{\hat{z}}}
+\newcommand{\hatr}{\bm{\hat{r}}}
+\newcommand{\hatn}{\bm{\hat{n}}}
+\newcommand{\hatrho}{\bm{\hat{\rho}}}
+\newcommand{\hatphi}{\bm{\hat{\phi}}}
+\newcommand{\hattheta}{\bm{\hat{\theta}}}
+\newcommand{\vecx}{\bm{x}}
+\newcommand{\varep}{\varepsilon}
+
+
+\theoremstyle{definition}
+\newtheorem*{solution*}{Solution}
+\renewcommand*{\proofname}{\bf{Solution}}
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+
+\section*{Chapter 6 - The Theory of Special Relativity}
+
+\subsection*{Exercises}
+
+\begin{proof}{\textbf{Exercise 1.}}\\
+Let us consider the round-trip of the parallel beam from $b$ to $d_1$ to $b$.
+If $L$ is the distance from $b$ to $d_1$ then the time taken to go from $b$ to
+$d_1$ is
+\begin{align*}
+    t_1 = \frac{L}{c - V}
+\end{align*}
+Since the velocity of the beam in that case is $c - V$. In the same way, for
+the trip back from $d_1$ to $b$ the time taken is
+\begin{align*}
+    t_2 = \frac{L}{c + V}
+\end{align*}
+The average speed is given by $\bar{v} = 2L/(t_1 + t_2)$ so
+\begin{align*}
+    \bar{v} &= \frac{2L}{t_1 + t_2}
+    = \frac{2L}{\frac{L}{c - V} + \frac{L}{c + V}}
+    = \frac{2}{\frac{c - V + c + V}{(c - V)(c + V)}} =\\
+    &= \frac{(c - V)(c + V)}{c}
+    = \frac{c^2 - V^2}{c}
+    = c\bigg(1 - \frac{V^2}{c^2}\bigg)
+\end{align*}
+If the average speed for the perpendicular beam is given by
+$\sqrt{c^2 - V^2} = c\sqrt{1 - V^2/c^2}$ then the time a round-trip takes is
+\begin{align*}
+    t_{\perp} = \frac{2L}{c\sqrt{1 - V^2/c^2}}
+\end{align*}
+So the time delay $\Delta t$ between the parallel and the perpendicular beam is
+\begin{align*}
+    \Delta t &= t_{\parallel} - t_{\perp}\\
+    &= \frac{2L}{c(1 - V^2/c^2)} - \frac{2L}{c\sqrt{1 - V^2/c^2}}\\
+    &= 2\bigg[\frac{L}{c(1 - V^2/c^2)} - \frac{L}{c\sqrt{1 - V^2/c^2}}\bigg]
+\end{align*}
+Also, we know the frequency of the beams is $1/T = c/\lambda$ then the phase
+difference must be
+\begin{align*}
+    \Delta\phi = \frac{\Delta t}{T}
+    = 2\bigg[\frac{L}{c(1 - V^2/c^2)} - \frac{L}{c\sqrt{1 - V^2/c^2}}\bigg]
+    \frac{c}{\lambda}
+\end{align*}
+Finally, assuming $V^2/c^2 \ll 1$ we may approximate the denominators by
+\begin{align*}
+    \Delta\phi
+    &\approx 2\bigg[
+    \frac{L}{c}(1 + V^2/c^2)- \frac{L}{c}(1 + V^2/2c^2)
+    \bigg]
+    \frac{c}{\lambda}\\
+    &\approx 2L\bigg[
+    \frac{V^2}{c^2}- \frac{V^2}{2c^2}
+    \bigg]
+    \frac{1}{\lambda}\\
+    &\approx 
+    \frac{L}{\lambda}
+    \frac{V^2}{c^2}
+\end{align*}
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{Exercise 2.}}\\
+The time between crests being emitted is $\tau_s = 1/\nu_s$ and hence the
+source will move during that time a distance $(\hatn \cdot \bm{V}_s)\tau_s$.
+\\
+If we assume the light is being emitted to the right while the source is moving
+to the right then the previous crest emitted will have moved a distance
+$\lambda$ from the source reference frame.
+\\
+Therefore the distance between crests emitted to the right from the ether
+reference frame is 
+\begin{align*}
+    \lambda' = \lambda - (\hatn \cdot \bm{V}_s)\tau_s
+\end{align*}
+So the frequency of the light from the ether reference frame is 
+\begin{align*}
+    \nu &= \frac{c}{\lambda'}\\
+        &= \frac{c}{\lambda - (\hatn \cdot \bm{V}_s)\tau_s}\\
+        &= \nu_s\frac{c}{\lambda\nu_s - \hatn \cdot \bm{V}_s}\\
+        &= \nu_s\frac{1}{1 - \hatn \cdot \bm{V}_s/c}
+\end{align*}
+Where we used that $\lambda \nu_s = c$ and hence
+\begin{align*}
+    \nu_s &= \nu \bigg(1 - \frac{\hatn \cdot \bm{V}_s}{c}\bigg)
+\end{align*}
+Let us suppose now that the receiver is "chasing" the source with a velocity
+$\bm{V}_r$, then the time between crests arriving to the receiver is
+$\tau_r = 1/\nu_r$, during that time the receiver will have moved a distance
+$(\hatn \cdot \bm{V}_r)\tau_r$.
+\\
+Therefore the distance between received crests from the ether reference frame
+is 
+\begin{align*}
+    \lambda' = \lambda - (\hatn \cdot \bm{V}_r)\tau_r
+\end{align*}
+So the frequency of the light from the ether reference frame is
+\begin{align*}
+    \nu &= \frac{c}{\lambda'}\\
+        &= \frac{c}{\lambda - (\hatn \cdot \bm{V}_r)\tau_r}\\
+        &= \nu_r\frac{c}{\lambda\nu_r - \hatn \cdot \bm{V}_r}\\
+        &= \nu_r\frac{1}{1 - \hatn \cdot \bm{V}_r/c}
+\end{align*}
+Where we used that also $\lambda \nu_r = c$ and hence
+\begin{align*}
+    \nu_r &= \nu \bigg(1 - \frac{\hatn \cdot \bm{V}_r}{c}\bigg)
+\end{align*}
+Finally, joining both equations for $\nu_s$ and $\nu_r$ we get that
+\begin{align*}
+    \nu_r &= \frac{\nu_s}{1 - \frac{\hatn \cdot \bm{V}_s}{c}}
+    \bigg(1 - \frac{\hatn \cdot \bm{V}_r}{c}\bigg)\\[6pt]
+    \nu_r &= \nu_s\frac{1 - \hatn \cdot \bm{V}_r/c}{1 - \hatn \cdot \bm{V}_s/c}
+\end{align*}
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{Exercise 3.}}\\
+We know that $dy' = dy$ so
+\begin{align*}
+    u_y' &= \frac{dy'}{dt'}
+    = \frac{dy}{\gamma(dt - Vdx)}
+    = \frac{(dy/dt)\sqrt{1 - V^2}}{1 - V(dx/dt)}
+    = u_y\frac{\sqrt{1 - V^2}}{1 - u_xV}
+\end{align*}
+In the same way, since $dz' = dz$ we get that
+\begin{align*}
+    u_z' &= \frac{dz'}{dt'}
+    = \frac{dz}{\gamma(dt - Vdx)}
+    = \frac{(dz/dt)\sqrt{1 - V^2}}{1 - V(dx/dt)}
+    = u_z\frac{\sqrt{1 - V^2}}{1 - u_xV}
+\end{align*}
+\end{proof}
+
+\end{document}
