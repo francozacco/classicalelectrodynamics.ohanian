@@ -1,0 +1,559 @@
+\documentclass[11pt]{article}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumitem}
+\usepackage{amsmath, physics}
+\usepackage{bm}
+\usepackage{adjustbox}
+\usepackage{mathrsfs}
+\usepackage{graphicx}
+% \usepackage{siunitx}
+\usepackage{physunits}
+\usepackage[mathscr]{euscript}
+
+\title{\textbf{Solved selected problems of Classical Electrodynamics - Hans Ohanian}}
+\author{Franco Zacco}
+\date{}
+
+\addtolength{\topmargin}{-3cm}
+\addtolength{\textheight}{3cm}
+
+\newcommand{\Nat}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\diam}{\text{diam}}
+\newcommand{\cl}{\text{cl}}
+\newcommand{\bdry}{\text{bdry}}
+\newcommand{\inter}{\text{int}}
+\newcommand{\hatx}{\bm{\hat{x}}}
+\newcommand{\haty}{\bm{\hat{y}}}
+\newcommand{\hatz}{\bm{\hat{z}}}
+\newcommand{\hatr}{\bm{\hat{r}}}
+\newcommand{\hatn}{\bm{\hat{n}}}
+\newcommand{\hatrho}{\bm{\hat{\rho}}}
+\newcommand{\hatphi}{\bm{\hat{\phi}}}
+\newcommand{\hattheta}{\bm{\hat{\theta}}}
+\newcommand{\vecx}{\bm{x}}
+\newcommand{\varep}{\varepsilon}
+
+
+\theoremstyle{definition}
+\newtheorem*{solution*}{Solution}
+\renewcommand*{\proofname}{\bf{Solution}}
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+
+\section*{Chapter 7 - Vector Calculus in Spacetime}
+
+\subsection*{Exercises}
+
+\begin{proof}{\textbf{Exercise 1.}}\\
+We see that
+\begin{align*}
+    {a^\alpha}_\mu \eta_{\alpha\beta} {a^\beta}_\nu
+    &= \begin{pmatrix}
+        \gamma & -V\gamma & 0 & 0 \\
+        -V\gamma & \gamma & 0 & 0 \\
+        0 & 0 & 1 & 0 \\
+        0 & 0 & 0 & 1
+    \end{pmatrix}
+    \begin{pmatrix}
+        1 & 0 & 0 & 0 \\
+        0 & -1 & 0 & 0 \\
+        0 & 0 & -1 & 0 \\
+        0 & 0 & 0 & -1
+    \end{pmatrix}
+    \begin{pmatrix}
+        \gamma & -V\gamma & 0 & 0 \\
+        -V\gamma & \gamma & 0 & 0 \\
+        0 & 0 & 1 & 0 \\
+        0 & 0 & 0 & 1
+    \end{pmatrix} \\
+    &= \begin{pmatrix}
+        \gamma & V\gamma & 0 & 0 \\
+        -V\gamma & -\gamma & 0 & 0 \\
+        0 & 0 & -1 & 0 \\
+        0 & 0 & 0 & -1
+    \end{pmatrix}
+    \begin{pmatrix}
+        \gamma & -V\gamma & 0 & 0 \\
+        -V\gamma & \gamma & 0 & 0 \\
+        0 & 0 & 1 & 0 \\
+        0 & 0 & 0 & 1
+    \end{pmatrix} \\
+    &= \begin{pmatrix}
+        \gamma^2 - V^2\gamma^2 & -V\gamma^2 + V\gamma^2 & 0 & 0 \\
+        -V\gamma^2 + V\gamma^2 & V^2\gamma^2 - \gamma^2 & 0 & 0 \\
+        0 & 0 & -1 & 0 \\
+        0 & 0 & 0 & -1
+    \end{pmatrix} \\
+    &= \begin{pmatrix}
+        \gamma^2(1 - V^2) & 0 & 0 & 0 \\
+        0 & \gamma^2(V^2 - 1) & 0 & 0 \\
+        0 & 0 & -1 & 0 \\
+        0 & 0 & 0 & -1
+    \end{pmatrix} \\
+    &= \begin{pmatrix}
+        1 & 0 & 0 & 0 \\
+        0 & -1 & 0 & 0 \\
+        0 & 0 & -1 & 0 \\
+        0 & 0 & 0 & -1
+    \end{pmatrix} \\
+    &= \eta_{\mu\nu}
+\end{align*}
+Where we used that $1 - V^2 = 1/\gamma^2$.
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{Exercise 2.}}\\
+Equation (1.38) states that
+\begin{align*}
+    a^{km} a^{kl} = \delta^{ml}
+\end{align*}
+Let us define ${a^{\mu}}_\nu$ as 
+\begin{align*}
+    {a^{\mu}}_\nu
+    &= \begin{pmatrix}
+        1 & 0 \\
+        0 & {a^k}_l
+    \end{pmatrix}
+\end{align*}
+Where ${a^k}_l$ is a spatial rotation matrix.\\
+Now, using ${a^\alpha}_\mu \eta_{\alpha\beta} {a^\beta}_\nu = \eta_{\mu\nu}$
+when $\mu = m$ and $\nu = l$ i.e. we take the spatial indices of the matrix
+${a^\mu}_\nu$ we see that
+\begin{align*}
+    {a^\alpha}_m \eta_{\alpha\beta} {a^\beta}_l 
+    &= {a^0}_m \eta_{00} {a^0}_l
+    + {a^1}_m \eta_{11} {a^1}_l
+    + {a^2}_m \eta_{22} {a^2}_l
+    + {a^3}_m \eta_{33} {a^3}_l \\
+    &= {a^1}_m \eta_{11} {a^1}_l
+    + {a^2}_m \eta_{22} {a^2}_l
+    + {a^3}_m \eta_{33} {a^3}_l \\
+    &= {a^k}_m \eta_{kj} {a^j}_l
+\end{align*}
+Where we used that ${a^0}_m$ is 0 when $m$ is a spatial coordinate.
+Also, we changed $\alpha$ to $k$ and $\beta$ to $j$ so symbolize that they can
+only take the spatial coordinate indices.\\
+Therefore, since $\eta_{kj} = -\delta_{kj}$ and $\delta_{kj} {a^j}_l = {a^k}_l$
+we have that
+\begin{align*}
+    {a^k}_m \eta_{kj} {a^j}_l &= \eta_{ml} \\
+    -{a^k}_m \delta_{kj} {a^j}_l &= -\delta_{ml}\\
+    {a^k}_m {a^k}_l &= \delta_{ml}
+\end{align*}
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{Exercise 3.}}\\
+We note that
+\begin{align*}
+    \eta^{\alpha\mu}\eta_{\mu\nu}
+    = \begin{pmatrix}
+        1 & 0 & 0 & 0 \\    
+        0 & -1 & 0 & 0 \\
+        0 & 0 & -1 & 0 \\
+        0 & 0 & 0 & -1
+    \end{pmatrix}
+    \begin{pmatrix}
+        1 & 0 & 0 & 0 \\    
+        0 & -1 & 0 & 0 \\
+        0 & 0 & -1 & 0 \\
+        0 & 0 & 0 & -1
+    \end{pmatrix}
+    = \begin{pmatrix}
+        1 & 0 & 0 & 0 \\    
+        0 & 1 & 0 & 0 \\
+        0 & 0 & 1 & 0 \\
+        0 & 0 & 0 & 1
+    \end{pmatrix}
+    = {\delta^{\alpha}}_{\nu}
+\end{align*}
+Then from equation (13) we know that
+\begin{align*}
+    x_\mu = \eta_{\mu\nu}x^\nu
+\end{align*}
+So multiplying both sides by $\eta^{\alpha\mu}$ we get that
+\begin{align*}
+    \eta^{\alpha\mu}x_\mu = \eta^{\alpha\mu}\eta_{\mu\nu}x^\nu
+    = {\delta^\alpha}_\nu x^\nu = x^\alpha
+\end{align*}
+If we rename the free index $\alpha$ to $\nu$ we get the equation (15)
+\begin{align*}
+    x^\nu = \eta^{\nu\mu}x_\mu
+\end{align*}
+Therefore, equation (15) agrees with equation (13).
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{Exercise 4.}}\\
+Let
+\begin{align*}
+    {a^\nu}_\alpha
+    = \begin{pmatrix}
+        \gamma & -V\gamma & 0 & 0 \\
+        -V\gamma & \gamma & 0 & 0 \\
+        0 & 0 & 1 & 0 \\
+        0 & 0 & 0 & 1 \\
+    \end{pmatrix}
+\end{align*}
+Then
+\begin{align*}
+    {a_\mu}^\beta
+    &= \eta_{\mu\nu} {a^\nu}_\alpha \eta^{\alpha\beta} \\
+    &= \begin{pmatrix}
+        1 & 0 & 0 & 0 \\
+        0 & -1 & 0 & 0 \\
+        0 & 0 & -1 & 0 \\
+        0 & 0 & 0 & -1
+    \end{pmatrix} 
+    \begin{pmatrix}
+        \gamma & -V\gamma & 0 & 0 \\
+        -V\gamma & \gamma & 0 & 0 \\
+        0 & 0 & 1 & 0 \\
+        0 & 0 & 0 & 1 \\
+    \end{pmatrix}
+    \begin{pmatrix}
+        1 & 0 & 0 & 0 \\
+        0 & -1 & 0 & 0 \\
+        0 & 0 & -1 & 0 \\
+        0 & 0 & 0 & -1
+    \end{pmatrix} \\
+    &= \begin{pmatrix}
+        \gamma & -V\gamma & 0 & 0 \\
+        V\gamma & -\gamma & 0 & 0 \\
+        0 & 0 & -1 & 0 \\
+        0 & 0 & 0 & -1
+    \end{pmatrix}
+    \begin{pmatrix}
+        1 & 0 & 0 & 0 \\
+        0 & -1 & 0 & 0 \\
+        0 & 0 & -1 & 0 \\
+        0 & 0 & 0 & -1
+    \end{pmatrix} \\
+    &= \begin{pmatrix}
+        \gamma & V\gamma & 0 & 0 \\
+        V\gamma & \gamma & 0 & 0 \\
+        0 & 0 & 1 & 0 \\
+        0 & 0 & 0 & 1
+    \end{pmatrix}
+\end{align*}
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{Exercise 5.}}\\
+Let us compute ${a^\alpha}_\nu {a_\alpha}^\mu$ as follows
+\begin{align*}
+    {a^\alpha}_\nu {a_\alpha}^\mu
+    &= \begin{pmatrix}
+        \gamma & -V\gamma & 0 & 0 \\
+        -V\gamma & \gamma & 0 & 0 \\
+        0 & 0 & 1 & 0 \\
+        0 & 0 & 0 & 1 \\
+    \end{pmatrix}
+    \begin{pmatrix}
+        \gamma & V\gamma & 0 & 0 \\
+        V\gamma & \gamma & 0 & 0 \\
+        0 & 0 & 1 & 0 \\
+        0 & 0 & 0 & 1 \\
+    \end{pmatrix} \\
+    &= \begin{pmatrix}
+        \gamma^2 -V^2 \gamma^2 & V\gamma^2 - V\gamma^2 & 0 & 0\\
+        -V\gamma^2 + V \gamma^2 & -V^2\gamma^2 + \gamma^2 & 0 & 0\\
+        0 & 0 & 1 & 0 \\
+        0 & 0 & 0 & 1
+    \end{pmatrix} \\
+    &= \begin{pmatrix}
+        \gamma^2(1 - V^2) & 0 & 0 & 0\\
+        0 & \gamma^2(1 - V^2) & 0 & 0\\
+        0 & 0 & 1 & 0 \\
+        0 & 0 & 0 & 1
+    \end{pmatrix} \\
+    &= \begin{pmatrix}
+        1 & 0 & 0 & 0\\
+        0 & 1 & 0 & 0\\
+        0 & 0 & 1 & 0 \\
+        0 & 0 & 0 & 1
+    \end{pmatrix}
+\end{align*}
+Also, if we compute ${a_\alpha}^\mu{a^\alpha}_\nu$ we get that
+\begin{align*}
+    {a_\alpha}^\mu{a^\alpha}_\nu
+    &= \begin{pmatrix}
+        \gamma & V\gamma & 0 & 0 \\
+        V\gamma & \gamma & 0 & 0 \\
+        0 & 0 & 1 & 0 \\
+        0 & 0 & 0 & 1 \\
+    \end{pmatrix}
+    \begin{pmatrix}
+        \gamma & -V\gamma & 0 & 0 \\
+        -V\gamma & \gamma & 0 & 0 \\
+        0 & 0 & 1 & 0 \\
+        0 & 0 & 0 & 1 \\
+    \end{pmatrix} \\
+    &= \begin{pmatrix}
+        \gamma^2 -V^2 \gamma^2 & -V\gamma^2 + V\gamma^2 & 0 & 0\\
+        V\gamma^2 - V \gamma^2 & -V^2\gamma^2 + \gamma^2 & 0 & 0\\
+        0 & 0 & 1 & 0 \\
+        0 & 0 & 0 & 1
+    \end{pmatrix} \\
+    &= \begin{pmatrix}
+        1 & 0 & 0 & 0\\
+        0 & 1 & 0 & 0\\
+        0 & 0 & 1 & 0 \\
+        0 & 0 & 0 & 1
+    \end{pmatrix}
+\end{align*}
+So, in both cases we get the identity matrix, this implies that ${a^\alpha}_\nu$
+is the inverse of ${a_\alpha}^\mu$ and viceversa.
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{Exercise 6.}}\\
+Equation (9) states that
+\begin{align*}
+    {a^\alpha}_\mu \eta_{\alpha\beta} {a^\beta}_\nu = \eta_{\nu\mu}
+\end{align*}
+Then multiplying the equation by $\eta^{\nu\sigma}$ we get that
+\begin{align*}
+    {a^\alpha}_\mu \eta_{\alpha\beta} {a^\beta}_\nu \eta^{\nu\sigma}
+    = \eta_{\nu\mu} \eta^{\nu\sigma}
+\end{align*}
+We proved in Exercise 3 that
+$\eta_{\nu\mu} \eta^{\nu\sigma} = {\delta^\sigma}_\mu$ and we know because of
+equation (20) that
+\begin{align*}
+    \eta_{\alpha\beta} {a^\beta}_\nu \eta^{\nu\sigma}
+    = {a_\alpha}^\sigma
+\end{align*}
+So we get that
+\begin{align*}
+    {a^\alpha}_\mu {a_\alpha}^\sigma = {\delta^\sigma}_\mu
+\end{align*}
+Or 
+\begin{align*}
+    {a_\alpha}^\mu {a^\alpha}_\nu = {\delta^\mu}_\nu
+\end{align*}
+Where we used that ${a^\alpha}_\mu$ and ${a_\alpha}^\sigma$ are inverses of
+each other so they commute as we proved in Exercise 5 and we renamed the indexes
+$\sigma \to \mu$ and $\mu \to \nu$.
+
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{Exercise 7.}}\\
+Let us consider the product $x^\mu x^\nu$. Since the position vectors
+transform as
+$$x'^\mu = {a^\mu}_\alpha x^\alpha$$
+Then we can write that
+\begin{align*}
+    x'^\mu x'^\nu = {a^\mu}_\alpha x^\alpha {a^\nu}_\beta x^\beta
+    = {a^\mu}_\alpha {a^\nu}_\beta x^\alpha x^\beta 
+\end{align*}
+So the product $x^\mu x^\nu$ transforms as a tensor, and hence it's a tensor.
+\end{proof}
+
+\begin{proof}{\textbf{Exercise 8.}}\\
+We note that
+\begin{align*}
+    {a^\beta}_\nu = {a^\alpha}_\nu {\delta_\alpha}^\beta
+\end{align*}
+From equation (23) we have that
+\begin{align*}
+    {a_\beta}^\mu {a^\beta}_\nu = {\delta^\mu}_\nu
+\end{align*}
+So we can write that
+\begin{align*}
+    {a_\beta}^\mu {a^\alpha}_\nu {\delta_\alpha}^\beta = {\delta^\mu}_\nu
+\end{align*}
+Therefore ${\delta^\mu}_\nu$ transforms as a tensor and hence it's a tensor.
+\end{proof}
+
+\begin{proof}{\textbf{Exercise 9.}}\\
+From equation (9) we know that
+\begin{align*}
+    \eta_{\alpha\beta} = {a^\mu}_\alpha \eta_{\mu\nu} {a^\nu}_\beta
+\end{align*}
+So multiplying the equation by ${a_\rho}^\alpha {a_\sigma}^\beta$ we get that
+\begin{align*}
+    {a_\rho}^\alpha {a_\sigma}^\beta\eta_{\alpha\beta}
+    = {a_\rho}^\alpha {a^\mu}_\alpha \eta_{\mu\nu} {a^\nu}_\beta {a_\sigma}^\beta
+    = \delta_\rho^\mu \eta_{\mu\nu} \delta^\nu_\sigma
+\end{align*}
+Therefore
+\begin{align*}
+    \eta_{\rho\sigma} = {a_\rho}^\alpha {a_\sigma}^\beta\eta_{\alpha\beta}
+\end{align*}
+So $\eta_{\mu\nu}$ transforms as a tensor.
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{Exercise 10.}}\\
+We know that
+\begin{align*}
+    A'^\mu = {a^\mu}_\alpha A^\alpha
+    \quad\text{and that}
+    \quad
+    B'_\mu = {a_\mu}^\beta B_\beta
+\end{align*}
+Then
+\begin{align*}
+    A'^\mu B'_\mu
+    = {a^\mu}_\alpha A^\alpha {a_\mu}^\beta B_\beta
+    = {a^\mu}_\alpha {a_\mu}^\beta A^\alpha  B_\beta
+    = \delta^\beta_\alpha A^\alpha  B_\beta
+    = A^\beta  B_\beta
+\end{align*}
+\end{proof}
+
+\begin{proof}{\textbf{Exercise 11.}}\\
+Let $B^\mu$ be a vector and $A_{\alpha\mu}$ be a tensor then
+\begin{align*}
+    A'_{\alpha\mu} B'^\mu
+    &= {a_\alpha}^\sigma {a_\mu}^\beta A_{\sigma \beta} {a^\mu}_\rho B^\rho \\
+    &= {a_\alpha}^\sigma {a_\mu}^\beta {a^\mu}_\rho A_{\sigma \beta} B^\rho \\
+    &= {a_\alpha}^\sigma \delta^\beta_\rho A_{\sigma \beta} B^\rho \\
+    &= {a_\alpha}^\sigma A_{\sigma \beta} B^\beta
+\end{align*}
+Where we used the laws of transformation of $B^\mu$ and $A_{\alpha\mu}$, and
+we see that $A_{\alpha\mu}B^\mu$ transforms as a vector.
+\end{proof}
+
+\begin{proof}{\textbf{Exercise 12.}}\\
+Let $T^{\mu\nu}$ be a tensor, we see that
+\begin{align*}
+    {T'^\mu}_\nu = {a^\mu}_\alpha {a_\nu}^\beta {T^\alpha}_\beta
+\end{align*}
+If we let $\nu = \mu$ then we have that
+\begin{align*}
+    {T'^\mu}_\mu
+    = {a^\mu}_\alpha {a_\mu}^\beta {T^\alpha}_\beta
+    = \delta_\alpha^\beta {T^\alpha}_\beta
+    = {T^\alpha}_\alpha
+\end{align*}
+We see that ${T^\mu}_\mu$ remains unchanged under Lorentz transformations so
+it is a scalar.
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{Exercise 13.}}\\
+Let us compujte $u_\mu u^\mu$ as follows
+\begin{align*}
+    u_\mu u^\mu &= \eta_{\mu\nu} u^\nu u^\mu\\
+    &= \frac{c^2}{1 -v^2/c^2} - \frac{(dx/dt)^2}{1 - v^2/c^2}
+    - \frac{(dy/dt)^2}{1 - v^2/c^2}
+    - \frac{(dz/dt)^2}{1 - v^2/c^2} \\
+    &= \frac{c^2}{1 -v^2/c^2} - \frac{v^2}{1 - v^2/c^2} \\
+    &= \frac{c^2 - v^2}{1 -v^2/c^2} \\
+    &= \frac{c^2(1 - v^2/c^2)}{1 -v^2/c^2} \\
+    &= c^2
+\end{align*}
+Where we used that $v^2 = (dx/dt)^2 + (dy/dt)^2 + (dz/dt)^2$.
+\end{proof}
+
+\begin{proof}{\textbf{Exercise 14.}}\\
+We know that $u_\mu u^\mu = c^2$ and that $p^\mu = m u^\mu$ so
+\begin{align*}
+    p_\mu p^\mu = m^2 u_\mu u^\mu = m^2 c^2
+\end{align*}
+Therefore
+\begin{align*}
+    p_\mu p^\mu = \frac{E^2}{c^2} - p_x^2 - p_y^2 - p_z^2 = m^2c^2
+\end{align*}
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{Exercise 15.}}\\
+We know from the Lorentz transformations that
+\begin{align*}
+    E' &= \frac{E - VP_x}{\sqrt{1 - V^2/c^2}} &
+    P_x' &= \frac{P_x - VE/c^2}{\sqrt{1 - V^2/c^2}}\\
+    P_y' &= P_y & P_z' &= P_z
+\end{align*}
+Where the primed quantities are the energy and momentum measured in a frame
+$S'$ which is moving with velocity $V$ with respect to an inertial frame $S$.
+In our case, we get that $E_0 = E'$ so
+\begin{align*}
+    E - VP_x &= E_0 \sqrt{1 - V^2/c^2}
+\end{align*}
+Also, in our case, in $S'$ we have that $P_x' = P_y' = P_z' = 0$ so we get that
+\begin{align*}
+    P_x &= VE/c^2 & P_y = P_z = 0
+\end{align*}
+Therefore
+\begin{align*}
+    E(1 - V^2/c^2) &= E_0 \sqrt{1 - V^2/c^2} \\
+    E &= E_0 \frac{\sqrt{1 - V^2/c^2}}{1 - V^2/c^2} \\
+    E &= \frac{E_0}{\sqrt{1 - V^2/c^2}}
+\end{align*}
+Replacing $E$ we get that
+\begin{align*}
+    P_x &= \frac{E_0 V/c^2}{\sqrt{1 - V^2/c^2}}
+\end{align*}
+Hence
+\begin{align*}
+    \bm{P} &= \frac{E_0 \bm{V}/c^2}{\sqrt{1 - V^2/c^2}}
+\end{align*}
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{Exercise 16.}}\\
+Let $\Phi(t,x) = f(ct + x)$ and let us call $v = ct + x$ then, we get that
+\begin{align*}
+    \pdv{\Phi}{t} &= \pdv{f(v)}{t} = \pdv{f(v)}{v}\pdv{v}{t} = c\pdv{f(v)}{v} \\
+    \pdv{\Phi}{x} &= \pdv{f(v)}{x} = \pdv{f(v)}{v}\pdv{v}{x} = \pdv{f(v)}{v}
+\end{align*}
+Differentiating again we have that
+\begin{align*}
+    \pdv[2]{\Phi}{t} &= \pdv{t}(c\pdv{f(v)}{v})
+    = c\pdv{v}(\pdv{f(v)}{t})
+    = c^2\pdv[2]{f(v)}{v} \\
+    \pdv[2]{\Phi}{x} &= \pdv{x}(\pdv{f(v)}{v})
+    = \pdv{v}(\pdv{f(v)}{x})
+    = \pdv[2]{f(v)}{v}
+\end{align*}
+Then
+\begin{align*}
+    \frac{1}{c^2}\pdv[2]{\Phi}{t} - \pdv[2]{\Phi}{x} &=
+    \frac{1}{c^2}\bigg(c^2\pdv[2]{f(v)}{v}\bigg) - \pdv[2]{f(v)}{v}
+    = 0
+\end{align*}
+Therefore $f(ct + x)$ is a solution to equation (96). If we try $f(ct - x)$
+with $v = ct - x$ we see that
+\begin{align*}
+    \pdv{\Phi}{x} &= \pdv{f(v)}{x} = \pdv{f(v)}{v}\pdv{v}{x} = -\pdv{f(v)}{v}
+\end{align*}
+and
+\begin{align*}
+    \pdv[2]{\Phi}{x} &= \pdv{x}(-\pdv{f(v)}{v})
+    = \pdv{v}(-\pdv{f(v)}{x})
+    = \pdv{v}(-\bigg(-\pdv{f(v)}{v}\bigg))
+    = \pdv[2]{f(v)}{v}
+\end{align*}
+This is the same result we get for $f(ct + x)$, therefore equation (96)
+is also satisfied by $f(ct - x)$.
+
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{Exercise 17.}}\\
+From the Lorentz-transformation equations for the current four-vector, we know
+that
+\begin{align*}
+    \rho' &= \frac{\rho - Vj_x /c^2}{\sqrt{1 - V^2/c^2}} \qquad
+    j_x' = \frac{j_x - V\rho}{\sqrt{1 - V^2/c^2}}
+\end{align*}
+If a wire along the $x$ axis is electrically neutral but carries a current in
+the $xyz$ frame then $\rho = 0$ and $j_x \neq 0$ then
+\begin{align*}
+    \rho' &= -\frac{Vj_x /c^2}{\sqrt{1 - V^2/c^2}} \qquad
+    j_x' = \frac{j_x}{\sqrt{1 - V^2/c^2}}
+\end{align*}
+Since $\rho' \neq 0$ this implies that the wire will not be neutral in the
+$x'y'z'$ frame.
+\end{proof}
+\end{document}
