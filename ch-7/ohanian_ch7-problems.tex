@@ -1,0 +1,544 @@
+\documentclass[11pt]{article}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumitem}
+\usepackage{amsmath, physics}
+\usepackage{bm}
+\usepackage{adjustbox}
+\usepackage{mathrsfs}
+\usepackage{graphicx}
+\usepackage{siunitx}
+\usepackage[mathscr]{euscript}
+
+\title{\textbf{Solved selected problems of Classical Electrodynamics - Hans Ohanian}}
+\author{Franco Zacco}
+\date{}
+
+\addtolength{\topmargin}{-3cm}
+\addtolength{\textheight}{3cm}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\diam}{\text{diam}}
+\newcommand{\cl}{\text{cl}}
+\newcommand{\bdry}{\text{bdry}}
+\newcommand{\inter}{\text{int}}
+\newcommand{\uvi}{\bm{i}}
+\newcommand{\uvj}{\bm{j}}
+\newcommand{\uvk}{\bm{k}}
+\newcommand{\hatx}{\bm{\hat{x}}}
+\newcommand{\haty}{\bm{\hat{y}}}
+\newcommand{\hatz}{\bm{\hat{z}}}
+\newcommand{\hatrho}{\bm{\hat{\rho}}}
+\newcommand{\hatphi}{\bm{\hat{\phi}}}
+\newcommand{\hatr}{\bm{\hat{r}}}
+\newcommand{\hatn}{\bm{\hat{n}}}
+\newcommand{\hattheta}{\bm{\hat{\theta}}}
+\newcommand{\sci}[1]{\times 10^{#1}}
+\newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}}
+
+\theoremstyle{definition}
+\newtheorem*{solution*}{Solution}
+\renewcommand*{\proofname}{\bf{Solution}}
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+
+\section*{Chapter 7 - Vector Calculus in Spacetime}
+
+\subsection*{Problems}
+\begin{proof}[\proofname\ 2]\leavevmode\par
+\begin{itemize}
+\item [(a)] Let $A(\mu,\nu)$ be an object with two indices and suppose that
+$A(\mu, \nu)B^\mu$ is a vector when $B^\mu$ is a vector. \\
+Let us consider the transformation law of the vector $A(\mu,\nu)B^\mu$
+\begin{align*}
+    A'(\mu,\nu)B'^\mu = {a_\nu}^\alpha A(\mu,\alpha)B^\mu
+\end{align*}
+Since $B^\mu$ is also a vector then we know that 
+\begin{align*}
+    B^\mu = {a_\sigma}^\mu B'^\sigma
+\end{align*}
+Hence
+\begin{align*}
+    A'(\mu,\nu)B'^\mu &= {a_\nu}^\alpha A(\mu,\alpha)B^\mu
+    = {a_\sigma}^\mu {a_\nu}^\alpha A(\mu,\alpha) B'^\sigma
+\end{align*}
+Renaming the dummy indices on the RHS $\sigma \leftrightarrow \mu$ we get that
+\begin{align*}
+    A'(\mu,\nu)B'^\mu 
+    &= {a_\mu}^\sigma {a_\nu}^\alpha A(\sigma,\alpha) B'^\mu
+\end{align*}
+Since $B'^\mu$ is a vector, it can be the vector $B'^\mu = (1, 0, 0, 0)$
+and hence the equation becomes 
+\begin{align*}
+    A'(t,\nu)
+    &= {a_t}^\sigma {a_\nu}^\alpha A(\sigma,\alpha)
+\end{align*}
+For the vector $B'^\mu = (0, 1, 0, 0)$ we get that
+\begin{align*}
+    A'(x,\nu)
+    &= {a_x}^\sigma {a_\nu}^\alpha A(\sigma,\alpha)
+\end{align*}
+The same can be proven for the vectors $B'^\mu = (0,0,1,0)$ and 
+$B'^\mu = (0,0,0,1)$.\\
+With this selection of vectors we see that $A(\mu, \nu)$ transforms like a
+tensor, and since this must hold for every vector, then it must be that
+$A(\mu, \nu)$ is a tensor.
+
+\item [(b)] Let $A(\mu,\nu)$ be an object with two indices and suppose that
+$A(\mu, \nu)C^{\mu\nu}$ is a scalar when $C^{\mu\nu}$ is a tensor. \\
+Scalars are invariant under transformation laws so
+\begin{align*}
+    A'(\mu, \nu)C'^{\mu\nu} = A(\mu, \nu)C^{\mu\nu}
+\end{align*}
+Since $C^{\mu\nu}$ is a tensor then we know that
+\begin{align*}
+    C^{\mu\nu} = {a_\alpha}^\mu{a_\beta}^\nu C'^{\alpha\beta}
+\end{align*}
+Then
+\begin{align*}
+    A'(\mu, \nu)C'^{\mu\nu} = {a_\alpha}^\mu{a_\beta}^\nu A(\mu, \nu) C'^{\alpha\beta}
+\end{align*}
+Renaming the dummy indices on the RHS $\alpha \leftrightarrow \mu$ 
+and $\beta \leftrightarrow \nu$, we get that
+\begin{align*}
+    A'(\mu, \nu)C'^{\mu\nu} = {a_\mu}^\alpha{a_\nu}^\beta A(\alpha, \beta) C'^{\mu\nu}
+\end{align*}
+As in part (a), if we select
+\begin{align*}
+    C'^{\mu\nu} = \begin{pmatrix}
+        1 & 0 & 0 & 0 \\
+        0 & 0 & 0 & 0 \\
+        0 & 0 & 0 & 0 \\
+        0 & 0 & 0 & 0
+    \end{pmatrix}
+\end{align*}
+Then the equation becomes
+\begin{align*}
+    A'(t, t) = {a_t}^\alpha{a_t}^\beta A(\alpha, \beta)
+\end{align*}
+The same can be shown for every component of $A(\mu,\nu)$, setting to 1 only
+the component we are interested in, in the tensor $C'^{\mu\nu}$. \\
+With this selection of tensors we see that $A(\mu, \nu)$ transforms like a
+tensor, and since this must hold for every tensor, then it must be that
+$A(\mu, \nu)$ is a tensor.
+\end{itemize}
+\end{proof}
+
+\cleardoublepage
+\begin{proof}[\proofname\ 3]
+Let $A^\mu$ and $B_{\mu}$ be two vectors such that $A^\mu B_\mu = 0$
+\begin{itemize}
+\item [(a)] Suppose $A^\mu A_\mu > 0$. We note that we can normalize
+$A^\mu A_\mu$ such that $A^\mu A_\mu = 1$, so we may take $A^\mu$ with three
+other vectors $x^\mu, y^\mu$ and $z^\mu$ as a orthonormal basis.\\
+Let us suppose $A^\mu$ is the timelike vector and the other three are spacelike
+vectors. \\
+Since $A^\mu B_\mu = 0$ then must be that $B^\mu$ is orthogonal to $A^\mu$
+and hence it must be a linear combination of the other three vectors i.e.
+\begin{align*}
+    B^\mu = a x^\mu + b y^\mu + c z^\mu
+\end{align*}
+Where $a,b,c$ are scalars. Then
+\begin{align*}
+    B^\mu B_\mu
+    &= -(a^2 x^1x_1 + b^2 y^1y_1 + c^2 z^1z_1)
+    -(a^2 x^2x_2 + b^2 y^2y_2 + c^2 z^2z_2) \\
+    &\quad -(a^2 x^3x_3 + b^2 y^3y_3 + c^2 z^3z_3) \\
+    &= -(a^2 + b^2 + c^2) -(a^2 + b^2 + c^2) -(a^2 + b^2 + c^2)
+\end{align*}
+Where we used that $x^iy_i = x^iz_i = y^iz_i = 0$ and that 
+$x^ix_i = y^iy_i = z^iz_i = 1$ for $i \in \{1,2,3\}$.
+Therefore $B^\mu B_\mu < 0$.
+
+\cleardoublepage
+\item [(b)] Suppose $A^\mu A_\mu = 0$ and let us suppose $B^\mu B_{\mu} > 0$
+we want to arrive at a contradiction.\\
+Let $B^\mu = (1, 0, 0, 0)$ since $A^\mu B_{\mu} = 0$ we get that $A^0 = 0$, 
+also since $A^\mu A_\mu = 0$ we get that
+\begin{align*}
+    (A^0)^2 - (A^1)^2 - (A^2)^2 - (A^3)^2 = 0 \\
+    (A^1)^2 + (A^2)^2 + (A^3)^2 = 0
+\end{align*}
+This is a contradiction since it cannot be unless $A^\mu = (0,0,0,0)$ which is
+a trivial solution and for which $B^\mu$ can be any vector. \\
+Therefore must be that $B^\mu B_\mu \leq 0$.\\
+If $B^\mu B_\mu = 0$ then $B^\mu$ is a lightlike vector as $A^\mu$. \\
+Let us take a reference frame such that $A^{\mu} = (1,1,0,0)$.\\
+Since we know that $A^\mu B_\mu = A'^\mu B'_\mu$ when $A'^\mu$
+and $B'_\mu$ are in a different reference frame, then taking $B^\mu$ in the
+same reference frame where $A^{\mu} = (1,1,0,0)$, must be that 
+\begin{align*}
+    A^\mu B_\mu &= 0 \\
+    A^0B^0 - A^1B^1 &= 0 \\
+    B^0 - B^1 &= 0
+\end{align*}
+Then $B^0 = B^1$, but also we know that $B^\mu B_\mu = 0$ so
+\begin{align*}
+    (B^0)^2 - (B^1)^2 - (B^2)^2 - (B^3)^2 &= 0 \\
+    - (B^2)^2 - (B^3)^2 &= 0
+\end{align*}
+Which implies that in this frame $B^\mu$ must be of the form 
+$$B^\mu = (B^0, B^0, 0, 0)$$
+Therefore must be that $B^\mu$ is porportional to $A^\mu$ i.e. $B^\mu = kA^\mu$.
+\end{itemize}
+\end{proof}
+
+\cleardoublepage
+\begin{proof}[\proofname\ 7]\leavevmode\par
+\begin{itemize}
+\item [(a)] We know that the relativistic momentum is given by
+\begin{align*}
+    \bm{p} = \frac{m\bm{v}}{\sqrt{1 - v^2/c^2}}
+\end{align*}
+Since the acceleration and the velocity are always parallel then we may define
+our coordinate system such that 
+\begin{align*}
+    p_x = \frac{mv_x}{\sqrt{1 - v_x^2/c^2}}
+\end{align*}
+Taking the derivative with respect to time, we get that
+\begin{align*}
+    \dv{p_x}{t}
+    &= \frac{mv_x^2}{c^2(1 - v_x^2/c^2)^{3/2}}\dv{v_x}{t}
+    + \frac{m}{\sqrt{1 - v_x^2/c^2}}\dv{v_x}{t} \\
+    &= \frac{m}{(1 - v_x^2/c^2)^{3/2}}\dv{v_x}{t}
+    \bigg(\frac{v_x^2}{c^2} 
+    + \frac{(1 - v_x^2/c^2)^{3/2}}{\sqrt{1 - v_x^2/c^2}}\bigg) \\
+    &= \frac{m}{(1 - v_x^2/c^2)^{3/2}}\dv{v_x}{t}
+    \bigg(\frac{v_x^2}{c^2} + 1 - \frac{v_x^2}{c^2}\bigg) \\
+    &= \frac{m}{(1 - v_x^2/c^2)^{3/2}}\dv{v_x}{t}
+\end{align*}
+Since when the acceleration and the velocity are parallel we can always select
+the coordinate system such that they are in the same axis
+(in this case the $x$ axis) then we can write that
+\begin{align*}
+    \dv{\bm{p}}{t} &= \frac{m}{(1 - v^2/c^2)^{3/2}}\dv{\bm{v}}{t}
+\end{align*}
+Therefore, comparing with the equation $d\bm{p}/dt = m(v)d\bm{v}/dt$
+we see that
+\begin{align*}
+    m(v) = \frac{m}{(1 - v^2/c^2)^{3/2}}
+\end{align*}
+\item [(b)] Let us consider now a particle in uniform circular motion such that
+the acceleration and the velocity are always perpendicular.\\
+Given that the magnitude of the velocity is constant in a uniform circular
+motion when taking the derivative with respect to time of 
+\begin{align*}
+    \bm{p} = \frac{m\bm{v}}{\sqrt{1 - v^2/c^2}}
+\end{align*}
+We ge that
+\begin{align*}
+    \dv{\bm{p}}{t} = \frac{m}{\sqrt{1 - v^2/c^2}}\dv{\bm{v}}{t}
+\end{align*}
+Therefore $m(v)$ must be
+\begin{align*}
+    m(v) = \frac{m}{\sqrt{1 - v^2/c^2}}
+\end{align*}
+\item [(c)] Finally, let us consider the case where the acceleration is
+neither parallel nor perpendicular to the velocity.\\
+Taking the derivative with respect to time of the relativistic momentum where
+$\bm{v}$ points in an arbitrary direction, we get that
+\begin{align*}
+    \dv{\bm{p}}{t}
+    = m\dv{t}(\frac{1}{\sqrt{1 - v^2/c^2}})\bm{v}
+    + \frac{m}{\sqrt{1 - v^2/c^2}}\dv{\bm{v}}{t}
+\end{align*}
+We note that
+\begin{align*}
+    \dv{t}(\frac{1}{\sqrt{1 - (\bm{v}\cdot\bm{v})/c^2}})
+    &= -\frac{1}{2}\bigg(1 - \frac{v^2}{c^2}\bigg)^{-3/2}
+    \dv{t}(1 - \frac{\bm{v}\cdot\bm{v}}{c^2}) \\
+    &= \frac{1}{2}\bigg(1 - \frac{v^2}{c^2}\bigg)^{-3/2}
+    \frac{2}{c^2}\bigg(\bm{v}\cdot\dv{\bm{v}}{t}\bigg) \\
+    &= \frac{\bm{v}\cdot\dv{\bm{v}}{t}}{c^2(1 - v^2/c^2)^{3/2}}
+\end{align*}
+So
+\begin{align*}
+    \dv{\bm{p}}{t}
+    = \frac{m\bm{v}\cdot\dv{\bm{v}}{t}}{c^2(1 - v^2/c^2)^{3/2}}\bm{v}
+    + \frac{m}{\sqrt{1 - v^2/c^2}}\dv{\bm{v}}{t}
+\end{align*}
+Therefore, $d\bm{p}/dt$ is not going to have the direction of the
+velocity nor the direction of the acceleration, but a combination of both and
+hence there is no scalar factor $m(v)$ we can come up with such that
+$$\dv{\bm{p}}{t} = m(v)\dv{\bm{v}}{t}$$
+\end{itemize}
+\end{proof}
+
+\cleardoublepage
+\begin{proof}[\proofname\ 8]
+Since the proton is at rest, then in momentum space the vector representing the
+proton is vertical and points to the vertex of the mass shell
+(or the hyperboloid), this is the point $(p^0, 0, 0, 0)$.\\
+If we assume the tachyon with $v = \infty$ is hitting the proton coming in
+the direction of the $p^x$-axis then the final state of the proton must be
+a vector with coordinates $(p^0, p^x, 0, 0)$ where $p^x \neq 0$, but we see
+that there is no point of the hyperboloid that matches this constraint.\\
+Therefore, the proton cannot absorb this tachyon.
+\end{proof}
+
+\cleardoublepage
+\begin{proof}[\proofname\ 9]\leavevmode\par
+\begin{itemize}
+\item [(a)] Let a extremely relativistic particle where $v \approx c$.
+This particle has an energy of
+\begin{align*}
+    E &= \frac{mc^2}{\sqrt{1 - v^2/c^2}}
+\end{align*}
+Given that $v \approx c$ we can define a small quantity $\epsilon = 1 - v/c$
+such that 
+\begin{align*}
+    \frac{v^2}{c^2} &= (\epsilon - 1)^2 = \epsilon^2 - 2\epsilon + 1 \approx - 2\epsilon + 1
+\end{align*}
+So
+\begin{align*}
+    1 - \frac{v^2}{c^2} &= 1 + 2\epsilon - 1 = 2\epsilon
+\end{align*}
+Therefore
+\begin{align*}
+    E &= \frac{mc^2}{\sqrt{2\epsilon}} \\
+    \epsilon &= \frac{1}{2}\left(\frac{mc^2}{E}\right)^2 \\
+    \frac{1}{c}(c - v)
+    &= \frac{1}{2}\left(\frac{mc^2}{E}\right)^2 \\
+    c - v
+    &= \frac{c}{2}\left(\frac{mc^2}{E}\right)^2
+\end{align*}
+\item [(b)] Given a proton of $1000~GeV$ the velocity difference is
+\begin{align*}
+    c - v
+    &= \frac{299\sci{6}~m/s}{2}\left(\frac{938.27~MeV}{1\sci{6}~MeV}\right)^2
+    = 131.6~m/s
+\end{align*}
+\item [(c)] Given an electron of $40~GeV$ the velocity difference is
+\begin{align*}
+    c - v
+    &= \frac{299\sci{6}~m/s}{2}\left(\frac{0.511~MeV}{4\sci{4}~MeV}\right)^2
+    = 0.0243~m/s
+\end{align*}
+\end{itemize}
+\end{proof}
+
+\cleardoublepage
+\begin{proof}[\proofname\ 10]
+Let us consider a particle of mass $m_1 = 1~g$ moving in the positive $x$
+direction with a velocity of $v_1 = 0.9$ and another particle of mass
+$m_2 = 1~g$ moving in the negative $x$ direction with velocity $v_2 = -0.99$.
+We assume $c = 1$. Then the total relativistic momentum of  the system is
+\begin{align*}
+    P &= \frac{m_1 v_1}{\sqrt{1 - v_1^2}} + \frac{m_2 v_2}{\sqrt{1 - v_2^2}} \\
+    &= 2.06 - 7.01 \\
+    &= -4.94
+\end{align*}
+Also, the total energy of the system is
+\begin{align*}
+    E &= \frac{m_1}{\sqrt{1 - v_1^2}} + \frac{m_2}{\sqrt{1 - v_2^2}} \\
+    &= 2.29 + 7.08 \\
+    &= 9.37
+\end{align*}
+So the velocity of the center of momentum from the laboratory frame is
+\begin{align*}
+    v_{C.M.} = \frac{P}{E} = \frac{-4.94}{9.37} = -0.52
+\end{align*}
+On the other hand, the velocity of the center of mass is
+\begin{align*}
+    v_{C.mass} = \frac{m_1v_1 + m_2v_2}{m_1 + m_2} = \frac{0.9 - 0.99}{2}
+    = - 0.045
+\end{align*}
+Therefore we see that for relativistic particles $v_{C.M.} \neq v_{C.mass}$.
+
+
+\end{proof}
+
+\cleardoublepage
+\begin{proof}[\proofname\ 20]\leavevmode\par
+\begin{itemize}
+\item [(a)] From the conservation of energy and momentum in the instantaneous
+rest frame $x'y'z't'$ of the rocket we have that
+\begin{align*}
+    dv' &= \frac{v_{ex}}{M}\frac{dm}{\sqrt{1 - v_{ex}^2/c^2}}
+    = - \frac{v_{ex}}{M} dM
+\end{align*}
+Also, from the velocity-combination formula we can approximate it as
+\begin{align*}
+    v + dv
+    &= \frac{v + dv'}{1 + vdv'/c^2} \\
+    &\approx (v + dv')\bigg(1 - \frac{vdv'}{c^2}\bigg) \\
+    &\approx v + dv' - \frac{v^2dv'}{c^2} \\
+    &= v + \bigg(1 - \frac{v^2}{c^2}\bigg)dv'
+\end{align*}
+Where we used the binomial approximation and we dropped the $dv'^2$ term.
+Then
+\begin{align*}
+    dv &= \bigg(1 - \frac{v^2}{c^2}\bigg)dv'
+\end{align*}
+Replacing $dv'$ and integrating we get that
+\begin{align*}
+    \frac{dv}{1 - v^2/v^2} &= -\frac{v_{ex}}{M}dM \\
+    \int_0^v \frac{dv}{1 - v^2/v^2} &= -v_{ex}\int_{M_i}^M\frac{dM}{M} \\
+    c\arctan(\frac{v}{c}) &= -v_{ex} [\log(M) - \log(M_i)] \\
+    \frac{c}{v_{ex}}\arctan(\frac{v}{c}) &= \log(\frac{M_i}{M}) \\
+    \frac{c}{2v_{ex}}\log(\frac{1 + v/c}{1 - v/c}) &= \log(\frac{M_i}{M})
+\end{align*}
+Therefore
+\begin{align*}
+    \log(\frac{M_i}{M}) &= \log(\bigg(\frac{c + v}{c - v}\bigg)^{\frac{c}{2v_{ex}}}) \\
+    \frac{M_i}{M} &= \bigg(\frac{c + v}{c - v}\bigg)^{\frac{c}{2v_{ex}}}
+\end{align*}
+\item [(b)] Let $v_{ex} = 3\sci{5}~cm/s$, $v = 0.1 c$ and $M = 1~ton$ then
+the mass of fuel needed is 
+\begin{align*}
+    M_i - M &= M\bigg(\frac{c + v}{c - v}\bigg)^{\frac{c}{2v_{ex}}} - M \\
+    &=\bigg(\frac{1.1}{0.9}\bigg)^{\frac{3\sci{10}}{6\sci{5}}} - 1 \\
+    &= 3.12 \sci{4354}~ton
+\end{align*}
+\item [(c)] Let $v_{ex} = c$, $v = 0.1 c$ and $M = 1~ton$ then
+the mass of fuel needed is 
+\begin{align*}
+    M_i - M &= M\bigg(\frac{c + v}{c - v}\bigg)^{\frac{c}{2v_{ex}}} - M \\
+    &=\bigg(\frac{1.1}{0.9}\bigg)^{1/2} - 1 \\
+    &= 0.105~ton
+\end{align*}
+
+\end{itemize}
+\end{proof}
+
+\cleardoublepage
+\begin{proof}[\proofname\ 22]
+Let $\Phi(t,\bm{x})$ be a scalar field. To show that 
+\begin{align*}
+    f(x^\mu) = \int \Phi(x^\mu)~dVdt
+\end{align*}
+is a scalar, we must show that $f$ is invariant under Lorentz transformations.
+If $f(x^\mu)$ is a scalar then must be that $f(x^\mu) = f(a_\alpha^\mu x'^\alpha)$. \\
+Let us compute $f(a_\alpha^\mu x'^\alpha)$ as follows
+\begin{align*}
+    f(a_\alpha^\mu x'^\alpha)
+    &= \int \Phi(a_\alpha^\mu x'^\alpha)~dV'dt' \\
+    &= \int \Phi(x^\mu)~\sqrt{1 - V^2}dV~\frac{dt}{\sqrt{1 - V^2}} \\
+    &= \int \Phi(x^\mu)~dVdt \\
+    &= f(x^\mu)
+\end{align*}
+We used that $\Phi$ is a scalar field and hence
+$\Phi(a_\alpha^\mu x'^\alpha) = \Phi(x^\mu)$, also, we used the volume
+contraction and time dilation equations.
+\end{proof}
+
+\cleardoublepage
+\begin{proof}[\proofname\ 23]
+Let the current density $j^\mu$ differ from zero only in a volume of
+finite extent in the $x, y, z$ directions.\\
+Let us integrate $\partial_\mu j^\mu = 0$ over the volume of a four-dimensional
+world tube that encloses the region of interest and extends from $x^0 =$
+constant to $x'^0 =$ constant.
+\begin{align*}
+    \int_\Omega \partial_\mu j^\mu ~ d\Omega &= 0
+\end{align*}
+We note that we are integrating over a four-dimensional volume $\Omega$,
+then applying Gauss' theorem we get that
+\begin{align*}
+    \int_V j^\mu n_\mu ~ dV &= 0
+\end{align*}
+Where $V$ is the surface of our four-dimensional volume. Given that $j^\mu$ is
+only non-zero in a finite volume which is enclosed by the integral, then
+the "flux" is only non-zero in the direction of the axis $x^0$, so the integral
+becomes
+\begin{align*}
+    \int_V j'^0 ~ dV - \int_V j^0 ~ dV &= 0
+\end{align*}
+Therefore 
+\begin{align*}
+    Q' = \int_V j'^0 ~ dV = \int_V j^0 ~ dV = Q
+\end{align*}
+This implies that the total charge is a scalar under Lorentz transformations.
+\end{proof}
+
+\cleardoublepage
+\begin{proof}[\proofname\ 24]
+In the previous problem we found that
+\begin{align*}
+    Q = \int_V J^0 dV
+\end{align*}
+Since $J^\mu$ is different from zero only in a volume of a finite extent then
+the exchange of charge with the space outside the volume is zero, then must be
+that the total charge $Q$ held inside the volume doesn't change with time, 
+therefore
+\begin{align*}
+    \dv{Q}{t} = \dv{t}(\int_V J^0 dV) = 0
+\end{align*}
+\end{proof}
+
+\cleardoublepage
+\begin{proof}[\proofname\ 25]
+In Exercise 17 we showed that an electrically neutral wire carring a current
+in the $xyz$ reference frame is not electrically neutral in the reference 
+frame $x'y'z'$ and the charge density (in this case a linear charge density)
+is given by
+\begin{align*}
+    \lambda' = -\frac{Vj_x/c^2}{\sqrt{1 - V^2/c^2}}
+\end{align*}
+So if $j_x = 3\sci{11}~esu/s$ and $V = 0.8c$ we get that the charge per unit of
+length is
+\begin{align*}
+    \lambda' = -\frac{0.8 \cdot 3\sci{11}/3\sci{10}}{\sqrt{1 - 0.8^2}}
+    = -13.33~esu/cm
+\end{align*}
+\end{proof}
+
+\cleardoublepage
+\begin{proof}[\proofname\ 26]
+We know that an electrically neutral wire carring a current
+in the $xyz$ reference frame is not electrically neutral in the reference 
+frame $x'y'z'$ and the charge density (in this case a linear charge density)
+is given by
+\begin{align*}
+    \lambda' = -\frac{VI_x/c^2}{\sqrt{1 - V^2/c^2}}
+\end{align*}
+Where $I_x$ is the $x$ component of the current $I$, in this case $I_x$ is
+related to $\theta$ by
+\begin{align*}
+    I_x = I\cos\theta
+\end{align*}
+Therefore the charge density observed in the reference frame $x'y'z'$ is
+\begin{align*}
+    \lambda' = -\frac{VI\cos\theta/c^2}{\sqrt{1 - V^2/c^2}}
+\end{align*}
+\end{proof}
+
+\cleardoublepage
+\begin{proof}[\proofname\ 27]
+Let us consider two large, horizontal, parallel conducting plates carring
+currents in opposite directions, the positive $x$ direction and the negative
+$x$ direction. The current is uniformly distributed over each plate, with $k$
+esu of charge per second flowing across each centimeter measured along the
+plate perpendicularly to the current.\\
+An observer in a reference frame moving at speed $V$ in the positive $x$
+direction will see a charge density and a current density of
+\begin{align*}
+    \sigma'_{+x} = -\frac{Vk}{c^2\sqrt{1 - V^2/c^2}}
+    \qquad
+    j_{+x}' = \frac{k}{\sqrt{1 - V^2/c^2}}
+\end{align*}
+for the plate with current in the positive $x$ direction.\\
+For the plate with current in the negative $x$ direction, the observer will
+experience a charge density and a current density of
+\begin{align*}
+    \sigma'_{-x} = \frac{Vk}{c^2\sqrt{1 - V^2/c^2}}
+    \qquad
+    j_{-x}' = -\frac{k}{\sqrt{1 - V^2/c^2}}
+\end{align*}
+We know that the electric field due to two charged plates is zero outside the
+plates (they cancel out) and in between them is 
+\begin{align*}
+    E_z = 4\pi \sigma
+\end{align*}
+Therefore
+\begin{align*}
+    E_z = \frac{4\pi Vk}{c^2\sqrt{1 - V^2/c^2}}
+\end{align*}
+\end{proof}
+\end{document}
+
